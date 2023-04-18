@@ -1,0 +1,20 @@
+.ui {
+    max-width: 350x;
+}
+.xs-text {
+    font-size: 9px;
+}
+
+.s-text {
+    font-size: 12px;
+}
+
+.l-text {
+    font-size: 50px;
+}
+
+.circle-btn {
+    padding: 0px;
+    margin: 0px;
+}
+
