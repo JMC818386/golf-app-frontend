@@ -3,18 +3,67 @@
 }
 .xs-text {
     font-size: 9px;
+    color: #F2EFDF;
 }
 
 .s-text {
     font-size: 12px;
+    color: #F2EFDF;
+}
+
+.m-text {
+    font-size: 30px;
+    color: #F2EFDF;
 }
 
 .l-text {
     font-size: 50px;
+    color: #F2EFDF;
+}
+
+.xl-text {
+    font-size: 50px;
+    color: #F2EFDF;
+}
+
+.box {
+    background-color: #314035;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
 }
 
 .circle-btn {
-    padding: 0px;
-    margin: 0px;
+    border: none;
+    background-color: #698C75;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 5px 5px, rgba(0, 0, 0, 0.09) 0px 5px 5px, rgba(0, 0, 0, 0.09) 0px 5px 5px;
 }
+
+.sqr-btn1 {
+    border: none;
+    background-color: #F2A74B;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    color: white;
+}
+
+.sqr-btn2 {
+    border: none;
+    background-color: #698C75;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    color: white;
+}
+
+.table {
+    color: #F2EFDF;
+    font-size: 10px;
+}
+
+/* 
+#314035 Dark Green
+#698C75 Light Green
+#46594B Mid Green
+#F2EFDF Off White
+#F2A74B Orange 
+*/
+
 
