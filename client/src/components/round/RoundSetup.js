@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Round.css";
 
 const BASE_URL =
@@ -22,6 +22,7 @@ function RoundSetup() {
     };
 
     getCourses();
+   
   }, []);
 
   const [searchValue, setSearchValue] = useState("");
@@ -33,6 +34,18 @@ function RoundSetup() {
   const filteredCourses = courses.filter((course) =>
     course.name.toLowerCase().includes(searchValue.toLowerCase())
   );
+
+  console.log(filteredCourses);
+
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const handleCourseClick = (course) => {
+    setSelectedCourse(course);
+  };
+
+  const handleBeginRound = () => {
+    console.log(selectedCourse);
+  }
 
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100">
@@ -51,8 +64,8 @@ function RoundSetup() {
             <div className="containter">
               <div className="row">
                 <div className="col d-flex flex-column justify-content-center">
-                  {filteredCourses.map((c) => (
-                  <button className="p-2 sqr-btn2" key={c.id}>{c.name}</button>
+                  {filteredCourses.map((course) => (
+                  <button className="p-2 sqr-btn2" key={course.id} onClick={() => handleCourseClick(course.name)}>{course.name}</button>
                   ))}
                 </div>
               </div>
@@ -72,8 +85,11 @@ function RoundSetup() {
             <div className="container d-flex justify-content-center">
               <div className="row">
                 <div className="col">
-                <Link to="/round">
-                  <button className="m-2 p-3 sqr-btn1">BEGIN ROUND</button>
+                {/* <Link to="/round:courseId" className="m-2 p-3 sqr-btn1">
+                  BEGIN ROUND
+                </Link> */}
+                <Link to="/round:courseId">
+                  <button className="m-2 p-3 sqr-btn1" onClick={handleBeginRound} disabled={!selectedCourse}>BEGIN ROUND</button>
                 </Link>
                </div>
               </div>

@@ -7,7 +7,7 @@ function Main() {
     return (
 
     <div>    
-      <div className="container d-flex align-items-center">
+      <div className="container d-flex align-items-center h-100">
         <div className="row vstack gap-1 d-flex column justify-content-center align-items-center">
             <div className="col  d-flex column justify-content-center">
                 <Link to="/round-setup">

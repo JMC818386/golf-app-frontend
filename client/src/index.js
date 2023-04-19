@@ -21,7 +21,7 @@ root.render(
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="round" element={<Round />} />
+          <Route path="round/:courseId" element={<Round />} />
           <Route path="round-history" element={<RoundHistory />} />
           <Route path="round-setup" element={<RoundSetup />} />
           <Route path="main" element={<Main />} />

@@ -4,9 +4,10 @@ import "bootstrap/dist/css/bootstrap.css";
 // (props) OR {scores}
 //  === props.scores.strokes OR scores.strokes
 
-function Scorecard({ scores }) {
+function Scorecard({ scores = [] }) {
   return (
     <div>
+      
       <table class="table">
         {/* thead is your top HEADER row of table */}
         <thead>

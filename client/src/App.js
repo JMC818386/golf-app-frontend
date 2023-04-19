@@ -8,7 +8,7 @@ import NavBar from "./components/NavBar";
 function App() {
   return (
     <GlobalProvider>
-      <div className="background vh-100">
+      <div className="background h-100">
         {/* <NavBar /> */}
         <div classname="container">
           <div className="row ">
