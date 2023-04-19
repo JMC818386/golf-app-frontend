@@ -15,6 +15,9 @@ function Round() {
   // Pass scores as props to RoundScorecard
   // Access scores within scorecard
   const [scores, setScores] = useState([]);
+  const [swings, setSwings] = useState(0);
+  const [putts, setPutts] = useState(0);
+  const [strokes, setStrokes] = useState(0);
 
   useEffect(() => {
     const getHoles = async () => {
@@ -30,6 +33,30 @@ function Round() {
   }, []);
 
   console.log(holes);
+
+  const SwingIncrement = () => {
+    setSwings(swings + 1);
+    setStrokes(strokes + 1);
+  };
+
+  const SwingDecrement = () => {
+    if (swings > 0) {
+      setSwings(swings - 1);
+      setStrokes(strokes - 1);
+    }
+  };
+
+  const PuttIncrement = () => {
+    setPutts(putts + 1);
+    setStrokes(strokes + 1);
+  };
+
+  const PuttDecrement = () => {
+    if (putts > 0) {
+      setPutts(putts - 1);
+      setStrokes(strokes - 1);
+    }
+  };
 
   return (
     <div>
@@ -65,7 +92,7 @@ function Round() {
               </div>
               <div className="col-4 text-light">
                 <p className="s-text d-flex justify-content-center pt-2">STOKES</p>
-                <h1 className="l-text d-flex justify-content-center">0</h1>
+                <h1 className="l-text d-flex justify-content-center">{strokes}</h1>
               </div>
               <div className="col-4 text-light s-text">
                 <p className="s-text d-flex justify-content-center pt-2">-/+</p>
@@ -75,31 +102,31 @@ function Round() {
 
             <div className="row d-flex box rounded mb-2 px-5">
               <div className="col-4 text-light xs-text d-flex justify-content-center py-4">
-                <button className="m-text rounded-circle px-4 circle-btn">-</button>
+                <button onClick={SwingDecrement} className="m-text rounded-circle px-4 circle-btn">-</button>
               </div>
               <div className="col-4 text-light">
                 <p className="s-text d-flex justify-content-center pt-2">SWINGS</p>
                 <h1 className="l-text d-flex justify-content-center align-items-center">
-                  0
+                  {swings}
                 </h1>
               </div>
               <div className="col-4 text-light s-text d-flex justify-content-center py-4">
-                <button className="m-text rounded-circle px-4 circle-btn">+</button>
+                <button onClick={SwingIncrement} className="m-text rounded-circle px-4 circle-btn">+</button>
               </div>
             </div>
 
             <div className="row d-flex box rounded px-5">
               <div className="col-4 text-light xs-text d-flex justify-content-center py-4">
-                <button className="m-text rounded-circle px-4 circle-btn">-</button>
+                <button onClick={PuttDecrement} className="m-text rounded-circle px-4 circle-btn">-</button>
               </div>
               <div className="col-4 text-light">
                 <p className="s-text d-flex justify-content-center pt-2">PUTTS</p>
                 <h1 className="l-text d-flex justify-content-center align-items-center">
-                  0
+                  {putts}
                 </h1>
               </div>
               <div className="col-4 text-light s-text d-flex justify-content-center py-4">
-                <button className="m-text rounded-circle px-4 circle-btn">+</button>
+                <button onClick={PuttIncrement} className="m-text rounded-circle px-4 circle-btn">+</button>
               </div>
             </div>
 

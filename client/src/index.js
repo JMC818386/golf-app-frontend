@@ -7,7 +7,7 @@ import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import Profile from "./components/user/Profile";
 import Round from "./components/round/Round";
-import RoundHistory from "./components/round/RoundHistory";
+import RoundHistory from "./components/round/RoundHistory.js";
 import RoundSetup from "./components/round/RoundSetup";
 import Main from "./components/Main";
 

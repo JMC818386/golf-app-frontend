@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { Link, Outlet } from "react-router-dom";
-import RoundSetup from "./round/RoundSetup";
 import "./Main.css";
 
 
@@ -16,7 +15,7 @@ function Main() {
                 </Link>
             </div>
             <div className="col d-flex column justify-content-center">
-                <Link to="/round-setup">
+                <Link to="/round-history">
                     <button className="mt-3 p-4 sqr-btn2">ROUND HISTORY</button>
                 </Link>
             </div>
