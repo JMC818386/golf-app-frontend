@@ -5,9 +5,7 @@ import axios from "axios";
 import HoleEntry from "./HoleEntry";
 import RoundScorecard from "./RoundScorecard";
 import { useParams } from "react-router-dom";
-
-const BASE_URL =
-  "https://8000-jmc818386-golfapp-5cplpf2dlek.ws-us94.gitpod.io/api/";
+import { API_URL } from "../../services/auth.constants";
 
 // When you click Complete Hole, make a PATCH request to update the round
 // Have another useEffect to get the Round data to update everytime round data changes
@@ -15,43 +13,52 @@ const BASE_URL =
 // Pass scores as props to RoundScorecard
 // Access scores within scorecard
 function Round() {
-  let { courseId } = useParams();
+  let { roundId, courseId } = useParams();
 
   const [scores, setScores] = useState([]);
-  //useEffect to call API for course/hole information
-  //array of holes
   const [holes, setHoles] = useState([]);
-  const [currentHole, SetCurrentHole] = useState(0);
-
-  const completeHole = () => {
-    // const currentIndex = holes.indexOf(currentHole);
-    // const nextIndex = (currentIndex + 1) % holes.length;
-    SetCurrentHole(currentHole + 1);
-    console.log(currentHole);
-  };
+  const [currentHole, setCurrentHole] = useState(0);
+  // const [courseId, setCourseId] = useState(0);
+  // TODO: set up a roundId state variable
 
   useEffect(() => {
+    // const viewRound = async () => {
+    //   let config = {
+    //     url: `/rounds/${roundId}`,
+    //     baseURL: BASE_URL,
+    //     method: "get",
+    //   };
+    //   let response = await axios.request(config);
+    //   console.log(response.data);
+    //   currentRound(response.data);
+    // };
+    // viewRound();
+
     const getHoles = async () => {
       let config = {
-        url: `/holes/?selected_course=${courseId}`,
-        baseURL: BASE_URL,
+        url: `/holes/`,
+        baseURL: API_URL,
         method: "get",
+        params: {
+          selected_course: courseId,
+        },
       };
       let response = await axios.request(config);
-      // let data = response.data.map(hole => ({
-      //   course_id: hole.course_id,
-      //   number: hole.number,
-      //   par: hole.par,
-      //   distance: hole.distance
-      // }));
       setHoles(response.data);
     };
     getHoles();
-  }, []);
+  }, [courseId]);
 
-  console.log(holes);
+  const completeHole = () => {
+    // TODO: POST Hole Score to Round
+    // TODO: Increment to next hole
+    setCurrentHole(currentHole + 1);
+    // console.log(currentHole);
+  };
 
-  if (holes.length == 0) {
+  // console.log(holes);
+
+  if (holes.length === 0) {
     return <h1>Loading...</h1>;
   }
 

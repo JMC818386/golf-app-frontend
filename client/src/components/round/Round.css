@@ -53,6 +53,13 @@
     color: white;
 }
 
+.sqr-btn2:active,
+.sqr-btn2:focus {
+    background-color: #F2A74B;
+    color: #F2EFDF;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.45) inset;
+}
+
 .table {
     color: #F2EFDF;
     font-size: 10px;
