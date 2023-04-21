@@ -17,13 +17,13 @@ function App() {
         <div className="container d-flex justify-content-center">
             <div className="row">
               <div className="col-12 d-flex justify-content-center align-items-center">
-              <Link to="/main">
-                <button className="m-2 p-2 sqr-btn2-main fixed-bottom">MAIN MENU</button>
-              </Link>
+                <Link to="/main">
+                  <button className="p-2 sqr-btn2-main">MAIN MENU</button>
+                </Link>
               </div>
             </div>
-          </div>
         </div>
+      </div>
     </GlobalProvider>
   );
 }

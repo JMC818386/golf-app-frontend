@@ -87,7 +87,7 @@ function Round() {
 
   return (
     <div>
-      <div className="container w-75 p-3 d-flex justify-content-center align-items-center h-100">
+      <div className="container p-3 d-flex justify-content-center align-items-center h-100">
         {/* {holes.map((hole) => { */}
         <div className="row d-flex justify-content-center">
           <div
@@ -96,12 +96,12 @@ function Round() {
           >
             <div className="row d-flex box rounded align-items-baseline mb-2">
               <div className="col-4 text-light s-text">
-                <p className="s-text d-flex justify-content-center align-items-center">
+                <p className="s-text d-flex justify-content-center">
                   {holes[currentHole]?.distance} yards
                 </p>
               </div>
-              <div className="col-4 text-light">
-                <h1 className="l-text d-flex justify-content-center">
+              <div className="col-4 text-light d-flex justify-content-center align-items-center">
+                <h1 className="xl-text d-flex justify-content-center pt-2 pb-0">
                   {holes[currentHole]?.number}
                 </h1>
               </div>

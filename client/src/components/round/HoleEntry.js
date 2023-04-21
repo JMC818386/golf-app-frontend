@@ -41,12 +41,12 @@ function HoleEntry({ setScores, scores }) {
       <div className="row d-flex justify-content-center">
         <div className="col vstack gap-1 d-flex justify-content-center">
           <div className="row d-flex box rounded mb-2">
-            <div className="col-4 text-light xs-text pt-2">
+            <div className="col-4 text-light xs-text pt-1">
               <p className="d-flex justify-content-center">DISTANCE</p>
-              <p className="l-text d-flex justify-content-center">-</p>
+              <p className="l-text d-flex justify-content-center"></p>
             </div>
             <div className="col-4 text-light">
-              <p className="s-text d-flex justify-content-center pt-2">
+              <p className="s-text d-flex justify-content-center mb-1 pt-1">
                 STROKES
               </p>
               <h1 className="l-text d-flex justify-content-center">
@@ -54,8 +54,8 @@ function HoleEntry({ setScores, scores }) {
               </h1>
             </div>
             <div className="col-4 text-light s-text">
-              <p className="s-text d-flex justify-content-center pt-2">-/+</p>
-              <h1 className="l-text d-flex justify-content-center">-</h1>
+              <p className="s-text d-flex justify-content-center pt-1">-/+</p>
+              <h1 className="l-text d-flex justify-content-center"></h1>
             </div>
           </div>
 
@@ -63,13 +63,13 @@ function HoleEntry({ setScores, scores }) {
             <div className="col-4 text-light xs-text d-flex justify-content-center py-4">
               <button
                 onClick={SwingDecrement}
-                className="m-text rounded-circle px-4 circle-btn"
+                className="m-text rounded-circle px-4 circle-btn dec"
               >
                 -
               </button>
             </div>
             <div className="col-4 text-light">
-              <p className="s-text d-flex justify-content-center pt-2">
+              <p className="s-text d-flex justify-content-center mb-0 pt-2">
                 SWINGS
               </p>
               <h1 className="l-text d-flex justify-content-center align-items-center">
@@ -79,7 +79,7 @@ function HoleEntry({ setScores, scores }) {
             <div className="col-4 text-light s-text d-flex justify-content-center py-4">
               <button
                 onClick={SwingIncrement}
-                className="m-text rounded-circle px-4 circle-btn"
+                className="m-text rounded-circle px-3 circle-btn"
               >
                 +
               </button>
@@ -90,13 +90,13 @@ function HoleEntry({ setScores, scores }) {
             <div className="col-4 text-light xs-text d-flex justify-content-center py-4">
               <button
                 onClick={PuttDecrement}
-                className="m-text rounded-circle px-4 circle-btn"
+                className="m-text rounded-circle px-4 circle-btn dec"
               >
                 -
               </button>
             </div>
             <div className="col-4 text-light">
-              <p className="s-text d-flex justify-content-center pt-2">PUTTS</p>
+              <p className="s-text d-flex justify-content-center mb-0 pt-2">PUTTS</p>
               <h1 className="l-text d-flex justify-content-center align-items-center">
                 {puttCount}
               </h1>
@@ -104,7 +104,7 @@ function HoleEntry({ setScores, scores }) {
             <div className="col-4 text-light s-text d-flex justify-content-center py-4">
               <button
                 onClick={PuttIncrement}
-                className="m-text rounded-circle px-4 circle-btn"
+                className="m-text rounded-circle px-3 circle-btn"
               >
                 +
               </button>

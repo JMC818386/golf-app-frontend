@@ -11,6 +11,7 @@ font-family: 'Hind', sans-serif; */
     color: #F2EFDF;
     background-color: #314035;
     padding: 10px 0px 10px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
 .nav-text {
