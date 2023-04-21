@@ -1,29 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Hind', sans-serif; */
+
+
 .ui {
     max-width: 350x;
 }
+
 .xs-text {
     font-size: 9px;
     color: #F2EFDF;
+    font-family: 'Hind', sans-serif;
 }
 
 .s-text {
-    font-size: 12px;
+    font-size: 15px;
     color: #F2EFDF;
+    font-family: 'Hind', sans-serif;
 }
 
 .m-text {
     font-size: 30px;
     color: #F2EFDF;
+    font-family: 'Hind', sans-serif;
+    
 }
 
 .l-text {
     font-size: 50px;
     color: #F2EFDF;
+    font-family: 'Hind', sans-serif;
 }
 
 .xl-text {
     font-size: 50px;
     color: #F2EFDF;
+    font-family: 'Hind', sans-serif;
 }
 
 .box {
@@ -37,6 +51,7 @@
     background-color: #698C75;
     color: white;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 5px 5px, rgba(0, 0, 0, 0.09) 0px 5px 5px, rgba(0, 0, 0, 0.09) 0px 5px 5px;
+    font-family: 'Montserrat', sans-serif
 }
 
 .sqr-btn1 {
@@ -44,6 +59,9 @@
     background-color: #F2A74B;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     color: white;
+    font-family: 'Montserrat', sans-serif;
+    padding: 3px 0px 3px 0px;
+    font-weight: bold;
 }
 
 .sqr-btn2 {
@@ -51,6 +69,9 @@
     background-color: #698C75;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     color: white;
+    font-family: 'Montserrat', sans-serif;
+    padding: 3px 0px 3px 0px;
+    font-weight: bold;
 }
 
 .sqr-btn2:active,

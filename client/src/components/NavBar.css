@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Hind', sans-serif; */
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    color: #F2EFDF;
+    background-color: #314035;
+    padding: 10px 0px 10px 0px;
+}
+
+.nav-text {
+    color: #F2EFDF;
+    font-family: 'Hind', sans-serif;
+
+}
+
+.nav-text:link { 
+    text-decoration: none;
+}
+
+.nav-text:visited { 
+    text-decoration: none; 
+}
+
+.nav-text:hover { 
+    text-decoration: none;
+    color: #698C75;
+}
+
+.nav-text:active { 
+    text-decoration: none;
+ 
+}
+
+
+/* 
+#314035 Dark Green
+#698C75 Light Green
+#46594B Mid Green
+#F2EFDF Off White
+#F2A74B Orange 
+*/

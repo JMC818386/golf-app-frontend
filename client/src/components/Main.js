@@ -16,7 +16,7 @@ function Main() {
             </div>
             <div className="col d-flex column justify-content-center">
                 <Link to="/round-history">
-                    <button className="mt-3 p-4 sqr-btn2">ROUND HISTORY</button>
+                    <button className="mt-3 mb-5 p-4 sqr-btn2">ROUND HISTORY</button>
                 </Link>
             </div>
         </div>

@@ -49,10 +49,33 @@ function Round() {
     getHoles();
   }, [courseId]);
 
+  // const updateScore = (newScore) => {
+  //   let newScores = [...scores];
+  //   newScores[currentHole] = newScore;
+  //   setScores(newScores)
+  // }
+
   const completeHole = () => {
     // TODO: POST Hole Score to Round
-    // TODO: Increment to next hole
-    setCurrentHole(currentHole + 1);
+    // const { strokeCount, swingCount, puttCount } = scores[currentHole];
+    //   let config = {
+    //     url: `/hole-scores/${roundId}`,
+    //     method:"patch",
+    //     data: {
+    //       hole_scores_attributes: [
+    //         {
+    //           course_id: courseId,
+    //           hole_id: holes[currentHole].id,
+    //           stroke: strokeCount,
+    //           swing: swingCount,
+    //           putt: puttCount,
+    //         },
+    //       ],
+    //     },
+    //   };
+    //   let response = axios.request(config);
+    //   completeHole(response.data);
+      setCurrentHole(currentHole + 1);
     // console.log(currentHole);
   };
 
@@ -95,7 +118,6 @@ function Round() {
             <button className="sqr-btn1 rounded" onClick={completeHole}>
               COMPLETE HOLE
             </button>
-            <button className="sqr-btn2 rounded">MAIN MENU</button>
           </div>
         </div>
         {/* })} */}
