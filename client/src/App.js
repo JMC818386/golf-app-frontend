@@ -18,7 +18,7 @@ function App() {
             <div className="row">
               <div className="col-12 d-flex justify-content-center align-items-center">
                 <Link to="/main">
-                  <button className="p-2 sqr-btn2-main">MAIN MENU</button>
+                  <button className="p-2 sqr-btn2-main rounded">MAIN MENU</button>
                 </Link>
               </div>
             </div>

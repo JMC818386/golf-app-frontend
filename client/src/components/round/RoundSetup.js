@@ -117,7 +117,7 @@ function RoundSetup() {
                   </button> */}
                   <button
                     onClick={() => newRound(selectedCourse, 18, 0)}
-                    className="m-5 p-3 sqr-btn1"
+                    className="m-5 p-3 sqr-btn1 rounded"
                     disabled={!selectedCourse}
                   >
                     BEGIN ROUND

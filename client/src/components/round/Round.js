@@ -90,6 +90,7 @@ function Round() {
       <div className="container p-3 d-flex justify-content-center align-items-center h-100">
         {/* {holes.map((hole) => { */}
         <div className="row d-flex justify-content-center">
+          {/* <p>{courseId}</p> */}
           <div
             className="col vstack gap-1 d-flex justify-content-center"
             key={holes[currentHole]?.id}
