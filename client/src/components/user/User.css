@@ -92,3 +92,9 @@ font-family: 'Hind', sans-serif; */
     color: #F2EFDF;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.45) inset;
 }
+
+#pass::placeholder {
+    font-size: 12px;
+    display: flex;
+    text-align: center;
+  }

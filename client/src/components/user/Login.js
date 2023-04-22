@@ -31,7 +31,7 @@ const Login = () => {
   }
 
   return (
-    <div className="container vh-100">
+    <div className="container">
       <div className="row mt-5">
         <div className="col mt-5">
           <div className="c-form mt-5">
@@ -62,7 +62,7 @@ const Login = () => {
                 />
               </div>
               <div className="d-flex justify-content-center">
-                <div className="d-flex justify-content-center flex-column m-4 ">
+                <div className="d-flex justify-content-center flex-column m-4">
                   <input
                     className="sqr-btn1 py-2 px-3 mb-3 rounded"
                     type="submit"
