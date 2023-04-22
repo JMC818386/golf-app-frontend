@@ -53,12 +53,19 @@ font-family: 'Hind', sans-serif; */
     font-family: 'Hind', sans-serif;
 }
 
+.sm-text {
+    font-size: 20px;
+    color: #F2A74B;
+    font-family: 'Hind', sans-serif;
+}
+
 .m-text {
     font-size: 30px;
     color: #F2EFDF;
     font-family: 'Hind', sans-serif;
     
 }
+
 
 .l-text {
     font-size: 50px;
@@ -127,8 +134,71 @@ font-family: 'Hind', sans-serif; */
 
 .table {
     color: #F2EFDF;
-    font-size: 10.5px;
+    font-size: 10px;
 }
+
+.card {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background: rgb(70,89,75);
+    background: radial-gradient(circle, rgba(70,89,75,1) 5%, rgba(49,64,53,1) 100%);
+}
+
+.score-type {
+    text-align: end;
+}
+
+.score-total {
+    font-size: 80px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    text-align: end;
+    margin-top: -22px;
+}
+
+.xs-text-mont {
+    font-size: 9px;
+    color: #F2EFDF;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.s-text-mont {
+    font-size: 12px;
+    color: #F2EFDF;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sm-text-mont {
+    font-size: 20px;
+    color: #F2EFDF;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sm-text-score {
+    font-size: 20px;
+    color: #F2A74B;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.m-text-mont {
+    font-size: 30px;
+    color: #F2EFDF;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+
+.l-text-mont {
+    font-size: 50px;
+    color: #F2EFDF;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.xl-text-mont {
+    font-size: 60px;
+    color: #F2EFDF;
+    font-family: 'Montserrat', sans-serif;
+}
+
 
 /* 
 #314035 Dark Green

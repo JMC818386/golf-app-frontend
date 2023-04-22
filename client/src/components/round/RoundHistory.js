@@ -3,13 +3,25 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./Round.css";
+import RoundCard from "./RoundCard";
 
 
 function RoundHistory() {
     return (
 
-    <div>    
-        <h1>ROUND HISTORY</h1>
+    <div> 
+        <div className="container d-flex justify-content-center">
+            <div className="row  my-3">
+                <div className="col card text-light">
+                    <h3>Round History</h3>
+                </div>
+            </div>
+        </div>   
+        <RoundCard />
+        <RoundCard />
+        <RoundCard />
+        <RoundCard />
+        <RoundCard />
     </div>
       
     );

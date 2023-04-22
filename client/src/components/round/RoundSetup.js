@@ -80,7 +80,7 @@ function RoundSetup() {
               type="text"
               placeholder="Search Courses"
               value={searchValue}
-              className="rounded mb-1"
+              className="rounded mb-1 border-0"
               onChange={handleSearchChange}
             />
             <div className="containter">

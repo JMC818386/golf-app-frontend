@@ -8,7 +8,7 @@ function Main() {
 
     <div>    
       <div className="container d-flex align-items-center h-100">
-        <div className="row vstack gap-1 d-flex column justify-content-center align-items-center">
+        <div className="row vstack gap-1 d-flex column justify-content-center align-items-center h-100">
             <div className="col  d-flex column justify-content-center">
                 <Link to="/round-setup">
                 <button className="mt-5 p-4 sqr-btn2">ROUND SETUP</button>
