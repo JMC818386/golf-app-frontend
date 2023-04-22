@@ -4,6 +4,9 @@ function HoleEntry({ setScores, scores }) {
   const [strokeCount, setStrokeCount] = useState(0);
   const [swingCount, setSwingCount] = useState(0);
   const [puttCount, setPuttCount] = useState(0);
+  const [swingFadeClass, setSwingFadeClass] = useState("");
+  const [puttFadeClass, setPuttFadeClass] = useState("");
+
 
   const addHoleScore = () => {
     // make api request to save scores
@@ -13,31 +16,47 @@ function HoleEntry({ setScores, scores }) {
   };
 
   const SwingIncrement = () => {
-    setSwingCount(swingCount + 1);
-    setStrokeCount(strokeCount + 1);
+    setSwingFadeClass("fade-out");
+    setTimeout(() => {
+      setSwingCount(swingCount + 1);
+      setStrokeCount(strokeCount + 1);
+      setSwingFadeClass("fade-in");
+    }, 300);
   };
 
   const SwingDecrement = () => {
     if (swingCount > 0) {
-      setSwingCount(swingCount - 1);
-      setStrokeCount(strokeCount - 1);
+      setSwingFadeClass("fade-out");
+      setTimeout(() => {
+        setSwingCount(swingCount - 1);
+        setStrokeCount(strokeCount - 1);
+        setSwingFadeClass("fade-in");
+      }, 300);
     }
   };
 
   const PuttIncrement = () => {
-    setPuttCount(puttCount + 1);
-    setStrokeCount(strokeCount + 1);
+    setPuttFadeClass("fade-out");
+    setTimeout(() => {
+      setPuttCount(puttCount + 1);
+      setStrokeCount(strokeCount + 1);
+      setPuttFadeClass("fade-in");
+    }, 300);
   };
 
   const PuttDecrement = () => {
     if (puttCount > 0) {
-      setPuttCount(puttCount - 1);
-      setStrokeCount(strokeCount - 1);
+      setPuttFadeClass("fade-out");
+      setTimeout(() => {
+        setPuttCount(puttCount - 1);
+        setStrokeCount(strokeCount - 1);
+        setPuttFadeClass("fade-in");
+      }, 300);
     }
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center h-100">
+    <div className="container d-flex justify-content-center align-items-center h-100 fade-in">
       <div className="row d-flex justify-content-center">
         <div className="col vstack gap-1 d-flex justify-content-center">
           <div className="row d-flex box rounded mb-2">
@@ -49,9 +68,11 @@ function HoleEntry({ setScores, scores }) {
               <p className="s-text d-flex justify-content-center mb-1 pt-1">
                 STROKES
               </p>
-              <h1 className="l-text d-flex justify-content-center">
-                {strokeCount}
-              </h1>
+              <div className={`${swingFadeClass}`}>
+                <h1 className={`l-text d-flex justify-content-center ${puttFadeClass}`}>
+                  {strokeCount}
+                </h1>
+              </div>
             </div>
             <div className="col-4 text-light s-text">
               <p className="s-text d-flex justify-content-center pt-1">-/+</p>
@@ -72,7 +93,7 @@ function HoleEntry({ setScores, scores }) {
               <p className="s-text d-flex justify-content-center mb-0 pt-2">
                 SWINGS
               </p>
-              <h1 className="l-text d-flex justify-content-center align-items-center">
+              <h1 className={`l-text d-flex justify-content-center align-items-center ${swingFadeClass}`}>
                 {swingCount}
               </h1>
             </div>
@@ -97,7 +118,7 @@ function HoleEntry({ setScores, scores }) {
             </div>
             <div className="col-4 text-light">
               <p className="s-text d-flex justify-content-center mb-0 pt-2">PUTTS</p>
-              <h1 className="l-text d-flex justify-content-center align-items-center">
+              <h1 className={`l-text d-flex justify-content-center align-items-center ${puttFadeClass}`}>
                 {puttCount}
               </h1>
             </div>

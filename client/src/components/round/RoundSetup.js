@@ -80,6 +80,7 @@ function RoundSetup() {
               type="text"
               placeholder="Search Courses"
               value={searchValue}
+              className="rounded mb-1"
               onChange={handleSearchChange}
             />
             <div className="containter">
@@ -87,7 +88,7 @@ function RoundSetup() {
                 <div className="col mb-5 d-flex flex-column justify-content-center">
                   {filteredCourses.map((course) => (
                     <button
-                      className="p-2 sqr-btn2"
+                      className="p-2 sqr-btn2 rounded"
                       key={course.id}
                       onClick={() => handleCourseClick(course.id)}
                     >

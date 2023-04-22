@@ -82,7 +82,12 @@ function Round() {
   // console.log(holes);
 
   if (holes.length === 0) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="loading">
+        <div className="spinner"></div>
+        <h1></h1>
+      </div>
+    );
   }
 
   return (
