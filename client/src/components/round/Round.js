@@ -4,8 +4,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import HoleEntry from "./HoleEntry";
 import RoundScorecard from "./RoundScorecard";
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { API_URL } from "../../services/auth.constants";
+
 
 // When you click Complete Hole, make a PATCH request to update the round
 // Have another useEffect to get the Round data to update everytime round data changes
@@ -81,6 +82,8 @@ function Round() {
 
   // console.log(holes);
 
+  const isLastHole = currentHole === holes.length - 1;
+
   if (holes.length === 0) {
     return (
       <div className="loading">
@@ -121,9 +124,13 @@ function Round() {
             <HoleEntry setScores={setScores} scores={scores} holes={holes} />
             <RoundScorecard scores={scores} />
 
-            <button className="sqr-btn1 rounded" onClick={completeHole}>
-              COMPLETE HOLE
-            </button>
+            {isLastHole ? (
+              <button className="sqr-btn1 rounded">COMPLETE ROUND</button>
+            ) : (
+              <button className="sqr-btn1 rounded" onClick={completeHole}>
+                COMPLETE HOLE
+              </button>
+            )}
           </div>
         </div>
         {/* })} */}

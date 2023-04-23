@@ -8,7 +8,7 @@ import NavBar from "./components/NavBar";
 function App() {
   return (
     <GlobalProvider>
-      <div className="background h-100">
+      <div className="background vh-100">
         <NavBar />
         
         <h1>{process.env.REACT_APP_MYENVVAR}</h1>
