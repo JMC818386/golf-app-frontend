@@ -26,7 +26,7 @@ const Login = () => {
           currentUserToken: resp.access,
           currentUser: data
         })
-        navigate('/profile')
+        navigate('/login-confirm')
       });
   }
 
@@ -68,7 +68,7 @@ const Login = () => {
                     type="submit"
                     value="SIGN IN"
                   />
-                  <Link to="/main">
+                  <Link to="/register">
                     <button className="p-2 sqr-btn2 rounded">CREATE ACCOUNT</button>
                   </Link>
                 </div>

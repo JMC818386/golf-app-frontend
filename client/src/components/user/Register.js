@@ -1,5 +1,9 @@
 import React, { useState } from "react"
 import AuthService from "../../services/auth.service";
+import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
+import "./User.css";
+import CreateConfirm from "./CreateConfirm";
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -102,19 +106,21 @@ const Register = () => {
               </div>
               <div className="d-flex justify-content-center">
                 <div className="d-flex justify-content-center flex-column m-4">
-                  <input
-                    type="submit"
-                    value="Register"
-                    className="p-2 sqr-btn1 mt-3 px-4 rounded"
-                    disabled={(
-                      user.password &&
-                      user.password.length >= 8 &&
-                      user.password === user.passwordConf &&
-                      user.firstName &&
-                      user.lastName &&
-                      user.email
-                    ) ? false : true}
-                  />
+                  <Link to="/create-confirm">
+                    <input
+                      type="submit"
+                      value="Register"
+                      className="p-2 sqr-btn1 mt-3 px-4 rounded"
+                      disabled={(
+                        user.password &&
+                        user.password.length >= 8 &&
+                        user.password === user.passwordConf &&
+                        user.firstName &&
+                        user.lastName &&
+                        user.email
+                      ) ? false : true}
+                    />
+                  </Link>
                 </div>
               </div>
             </form>
