@@ -1,12 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function HoleEntry({ setScores, scores }) {
+function HoleEntry({ setScores, scores, hole }) {
   const [strokeCount, setStrokeCount] = useState(0);
   const [swingCount, setSwingCount] = useState(0);
   const [puttCount, setPuttCount] = useState(0);
   const [swingFadeClass, setSwingFadeClass] = useState("");
   const [puttFadeClass, setPuttFadeClass] = useState("");
+  const [distance, setDistance] = useState(null);
 
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+
+        
+        const R = 6371e3;
+        const φ1 = (latitude * Math.PI) / 180;
+        const φ2 = (37.9891992 * Math.PI) / 180;
+        const Δφ = ((37.9891992 - latitude) * Math.PI) / 180;
+        const Δλ = ((-84.4722445 - longitude) * Math.PI) / 180;
+
+        const a =
+          Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+          Math.cos(φ1) *
+            Math.cos(φ2) *
+            Math.sin(Δλ / 2) *
+            Math.sin(Δλ / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        const d = (R * c) / 0.9144;
+
+        setDistance(Math.round(d));
+      });
+    }
+  }, [hole]);
 
   const addHoleScore = () => {
     // make api request to save scores
@@ -62,7 +89,7 @@ function HoleEntry({ setScores, scores }) {
           <div className="row d-flex box rounded mb-2">
             <div className="col-4 text-light xs-text pt-1">
               <p className="d-flex justify-content-center">DISTANCE</p>
-              <p className="l-text d-flex justify-content-center"></p>
+              <p className="s-text d-flex justify-content-center pt-2 orange-text">{distance} yards</p>
             </div>
             <div className="col-4 text-light">
               <p className="s-text d-flex justify-content-center mb-1 pt-1">

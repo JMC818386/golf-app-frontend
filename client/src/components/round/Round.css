@@ -40,6 +40,9 @@ font-family: 'Hind', sans-serif; */
 /* .ui {
     max-width: 400px;
 } */
+.orange-text {
+    color: #F2A74B;
+}
 
 .xs-text {
     font-size: 9px;
