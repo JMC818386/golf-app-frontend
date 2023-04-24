@@ -7,11 +7,8 @@ import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <GlobalProvider>
       <div className="background vh-100">
         <NavBar />
-        
-        <h1>{process.env.REACT_APP_MYENVVAR}</h1>
         <Outlet />
       
         <div className="container d-flex justify-content-center">
@@ -24,7 +21,6 @@ function App() {
             </div>
         </div>
       </div>
-    </GlobalProvider>
   );
 }
 

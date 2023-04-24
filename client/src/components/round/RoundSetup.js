@@ -4,14 +4,21 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useNavigate } from "react-router-dom";
 import "./Round.css";
 import { API_URL } from "../../services/auth.constants";
+import request from "../../services/api.request";
+import { useGlobalState } from "../../context/GlobalState";
 
 function RoundSetup() {
   let navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [searchValue, setSearchValue] = useState("");
+  const [state] = useGlobalState();
 
   useEffect(() => {
+    if (!state.currentUser) {
+      navigate("/login");
+    }
+
     const getCourses = async () => {
       let config = {
         url: "/courses/",
@@ -25,7 +32,6 @@ function RoundSetup() {
     getCourses();
   }, []);
 
-
   const handleCourseClick = (course) => {
     setSelectedCourse(course);
   };
@@ -38,7 +44,6 @@ function RoundSetup() {
   const newRound = async (course, round_length, total_score) => {
     let config = {
       url: `/rounds/`,
-      baseURL: API_URL,
       method: "post",
       data: {
         course,
@@ -46,7 +51,7 @@ function RoundSetup() {
         total_score,
       },
     };
-    let response = await axios.request(config);
+    let response = await request(config);
     navigate(`/round/${response.data.id}/${response.data.course}`);
     // setCurrentRound(response.data);
     // currentRoundRef.current = response.data;
@@ -58,7 +63,6 @@ function RoundSetup() {
 
   // const [currentRound, setCurrentRound] = useState(null);
   // const currentRoundRef = useRef(null);
-
 
   // useEffect(() => {
   //   if (currentRoundRef.current) {

@@ -13,26 +13,32 @@ import Main from "./components/Main";
 import LogInConfirm from "./components/user/LoginConfirm";
 import LogOutConfirm from "./components/user/LogOutConfirm";
 import CreateConfirm from "./components/user/CreateConfirm";
+import { GlobalProvider } from "./context/GlobalState";
+import { Redirect } from 'react-router-dom';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="create-confirm" element={<CreateConfirm />} />
-          <Route path="login-confirm" element={<LogInConfirm />} />
-          <Route path="logout-confirm" element={<LogOutConfirm />} />
-          <Route path="round/:roundId/:courseId" element={<Round />} />
-          <Route path="round-history" element={<RoundHistory />} />
-          <Route path="round-setup" element={<RoundSetup />} />
-          <Route path="main" element={<Main />} />
-        </Route>
-      </Routes>
-    </Router>
+    <GlobalProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="create-confirm" element={<CreateConfirm />} />
+            <Route path="login-confirm" element={<LogInConfirm />} />
+            <Route path="logout-confirm" element={<LogOutConfirm />} />
+            <Route path="round/:roundId/:courseId" element={<Round />} />
+            <Route path="round-history" element={<RoundHistory />} />
+            <Route path="round-setup" element={<RoundSetup />} />
+            <Route path="main" element={<Main />} />
+          </Route>
+        </Routes>
+      </Router>
+    </GlobalProvider>
   </React.StrictMode>
 );

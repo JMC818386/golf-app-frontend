@@ -1,11 +1,12 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import AuthService from "../../services/auth.service";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./User.css";
 import CreateConfirm from "./CreateConfirm";
 
 const Register = () => {
+  let navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -13,19 +14,19 @@ const Register = () => {
     firstName: "",
     lastName: "",
     email: "",
-  })
+  });
 
   const handleChange = (key, value) => {
     setUser({
       ...user,
-      [key]: value
-    })
-  }
+      [key]: value,
+    });
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    AuthService.register(user)
-  }
+    AuthService.register(user).then(() => navigate("/create-confirm"));
+  };
 
   return (
     <div className="container">
@@ -33,7 +34,9 @@ const Register = () => {
         <div className="col">
           <div className="c-form">
             <form onSubmit={handleRegister}>
-            <p className="d-flex justify-content-center mt-4 mb-1 s-text">Username</p>
+              <p className="d-flex justify-content-center mt-4 mb-1 s-text">
+                Username
+              </p>
               <div className="d-flex justify-content-center">
                 <label htmlFor="username"></label>
                 <input
@@ -41,11 +44,13 @@ const Register = () => {
                   id="username"
                   name="username"
                   className="rounded border-0 mb-3"
-                  onChange={(e) => handleChange('username', e.target.value)}
+                  onChange={(e) => handleChange("username", e.target.value)}
                   required
                 />
               </div>
-              <p className="d-flex justify-content-center mt-2 mb-1 s-text">Email</p>
+              <p className="d-flex justify-content-center mt-2 mb-1 s-text">
+                Email
+              </p>
               <div className="d-flex justify-content-center">
                 <label htmlFor="email"></label>
                 <input
@@ -53,11 +58,13 @@ const Register = () => {
                   id="email"
                   name="email"
                   className="rounded border-0 mb-3"
-                  onChange={(e) => handleChange('email', e.target.value)}
+                  onChange={(e) => handleChange("email", e.target.value)}
                   required
                 />
               </div>
-              <p className="d-flex justify-content-center mt-2 pb-1 mb-1 s-text">Password</p>
+              <p className="d-flex justify-content-center mt-2 pb-1 mb-1 s-text">
+                Password
+              </p>
               <div className="d-flex justify-content-center">
                 <label htmlFor="pass"></label>
                 <input
@@ -67,10 +74,12 @@ const Register = () => {
                   className="rounded border-0 mb-3"
                   minLength="8"
                   required
-                  onChange={(e) => handleChange('password', e.target.value)}
+                  onChange={(e) => handleChange("password", e.target.value)}
                 />
               </div>
-              <p className="d-flex justify-content-center mt-2 mb-1 s-text">Confirm Password</p>
+              <p className="d-flex justify-content-center mt-2 mb-1 s-text">
+                Confirm Password
+              </p>
               <div className="d-flex justify-content-center">
                 <label htmlFor="passConf"></label>
                 <input
@@ -80,9 +89,12 @@ const Register = () => {
                   className="rounded border-0 mb-3"
                   minLength="8"
                   required
-                  onChange={(e) => handleChange('passwordConf', e.target.value)} />
+                  onChange={(e) => handleChange("passwordConf", e.target.value)}
+                />
               </div>
-              <p className="d-flex justify-content-center mt-2 mb-1 s-text">First Name</p>
+              <p className="d-flex justify-content-center mt-2 mb-1 s-text">
+                First Name
+              </p>
               <div className="d-flex justify-content-center">
                 <label htmlFor="firstName"></label>
                 <input
@@ -91,9 +103,12 @@ const Register = () => {
                   name="fname"
                   className="rounded border-0 mb-3"
                   required
-                  onChange={(e) => handleChange('firstName', e.target.value)} />
+                  onChange={(e) => handleChange("firstName", e.target.value)}
+                />
               </div>
-              <p className="d-flex justify-content-center mt-2 mb-1 s-text">Last Name</p>
+              <p className="d-flex justify-content-center mt-2 mb-1 s-text">
+                Last Name
+              </p>
               <div className="d-flex justify-content-center">
                 <label htmlFor="lastName"></label>
                 <input
@@ -102,25 +117,26 @@ const Register = () => {
                   name="lname"
                   className="rounded border-0"
                   required
-                  onChange={(e) => handleChange('lastName', e.target.value)} />
+                  onChange={(e) => handleChange("lastName", e.target.value)}
+                />
               </div>
               <div className="d-flex justify-content-center">
                 <div className="d-flex justify-content-center flex-column m-4">
-                  <Link to="/create-confirm">
-                    <input
-                      type="submit"
-                      value="Register"
-                      className="p-2 sqr-btn1 mt-3 px-4 rounded"
-                      disabled={(
-                        user.password &&
-                        user.password.length >= 8 &&
-                        user.password === user.passwordConf &&
-                        user.firstName &&
-                        user.lastName &&
-                        user.email
-                      ) ? false : true}
-                    />
-                  </Link>
+                  <input
+                    type="submit"
+                    value="Register"
+                    className="p-2 sqr-btn1 mt-3 px-4 rounded"
+                    disabled={
+                      user.password &&
+                      user.password.length >= 8 &&
+                      user.password === user.passwordConf &&
+                      user.firstName &&
+                      user.lastName &&
+                      user.email
+                        ? false
+                        : true
+                    }
+                  />
                 </div>
               </div>
             </form>
@@ -128,11 +144,7 @@ const Register = () => {
         </div>
       </div>
     </div>
+  );
+};
 
-
- 
-  )
-
-}
-
-export default Register
+export default Register;

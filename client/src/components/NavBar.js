@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 
 function NavBar() {
   const [ state, dispatch ] = useGlobalState();
-  const [ setData ] = useState();
+  const [ , setData ] = useState();
   let navigate = useNavigate();
 
   const handleLogout = (e) => {

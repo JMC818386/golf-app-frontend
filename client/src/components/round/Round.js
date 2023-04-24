@@ -7,7 +7,9 @@ import RoundScorecard from "./RoundScorecard";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../../services/auth.constants";
 import { useGlobalState } from "../../context/GlobalState";
-// import { useAuth } from "../../contexts/AuthContext";
+import request from "../../services/api.request";
+import { useNavigate } from "react-router-dom";
+// import { useAuth } from "../../contexts/GlobalState";
 
 // When you click Complete Hole, make a PATCH request to update the round
 // Have another useEffect to get the Round data to update everytime round data changes
@@ -15,6 +17,7 @@ import { useGlobalState } from "../../context/GlobalState";
 // Pass scores as props to RoundScorecard
 // Access scores within scorecard
 function Round() {
+  let navigate = useNavigate();
   let { roundId, courseId } = useParams();
   // const { authToken } = useAuth();
   const [state, dispatch] = useGlobalState();
@@ -33,7 +36,21 @@ function Round() {
   const [swingFadeClass, setSwingFadeClass] = useState("");
   const [puttFadeClass, setPuttFadeClass] = useState("");
   const [distance, setDistance] = useState(null);
+  const [holeStrokes, setHoleStrokes] = useState(Array(18).fill(0));
 
+
+  const handleCompleteHoleClick = (holeNumber, strokes) => {
+    // Update the stroke count for the given hole
+    const newHoleStrokes = [...holeStrokes];
+    newHoleStrokes[holeNumber - 1] = strokes;
+    setHoleStrokes(newHoleStrokes);
+  };
+
+  const frontNineScore = holeStrokes.slice(0, 9).reduce((a, b) => a + b, 0);
+  const backNineScore = holeStrokes.slice(9).reduce((a, b) => a + b, 0);
+  const totalScore = frontNineScore + backNineScore;
+
+  //Distance from green calcuation function:
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -65,6 +82,7 @@ function Round() {
     }
   }, [currentHole]);
 
+  // This gets all the hole information based on rounds
   useEffect(() => {
     // const viewRound = async () => {
     //   let config = {
@@ -105,28 +123,29 @@ function Round() {
     // const { strokeCount, swingCount, puttCount } = scores[currentHole];
     let config = {
       url: `/hole-scores/`,
-      baseURL: API_URL,
       method: "post",
       data: {
-        // user: user.id,
         hole_round: roundId,
-        hole: holes[currentHole].id,
+        hole: holes[currentHole].number,
         strokes: strokeCount,
         swings: swingCount,
         putts: puttCount,
       },
-      // headers: {
-      //   Authorization: `Bearer ${state.currentUser.exp}`,
-      // },
     };
 
-    let response = await axios.request(config);
+    let response = await request(config);
     setCurrentHole(currentHole + 1);
     setStrokeCount(0);
     setSwingCount(0);
     setPuttCount(0);
     // console.log(currentHole);
   };
+
+  const completeRound = () => {
+    updateScore();
+    navigate("/round-history");
+  }
+
 
   // console.log(holes);
 
@@ -292,12 +311,74 @@ function Round() {
               </div>
             </div>
 
-            <RoundScorecard scores={scores} />
+          {/* Scorecard Tables */}
+            <div>
+              <table className="table">
+                {/* thead is your top HEADER row of table */}
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">1</th>
+                    <th scope="col">2</th>
+                    <th scope="col">3</th>
+                    <th scope="col">4</th>
+                    <th scope="col">5</th>
+                    <th scope="col">6</th>
+                    <th scope="col">7</th>
+                    <th scope="col">8</th>
+                    <th scope="col">9</th>
+                    <th scope="col">36</th>
+                    <th scope="col">-</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* tr a row in the table */}
+                  <tr>
+                    <td>F</td>
+                    {holeStrokes.slice(0, 9).map((strokes, index) => (
+                      <td key={index}>{strokes}</td>
+                    ))}
+                    <td>{frontNineScore}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table className="table">
+                {/* thead is your top HEADER row of table */}
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">10</th>
+                    <th scope="col">11</th>
+                    <th scope="col">12</th>
+                    <th scope="col">13</th>
+                    <th scope="col">14</th>
+                    <th scope="col">15</th>
+                    <th scope="col">16</th>
+                    <th scope="col">17</th>
+                    <th scope="col">18</th>
+                    <th scope="col">36</th>
+                    <th scope="col">72</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* tr a row in the table */}
+                  <tr>
+                    <td>B</td>
+                    {holeStrokes.slice(9).map((strokes, index) => (
+                      <td key={index + 9}>{strokes}</td>
+                    ))}
+                    <td>{backNineScore}</td>
+                    <td>{totalScore}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
             {isLastHole ? (
-              <button className="sqr-btn1 rounded">COMPLETE ROUND</button>
+              <button className="sqr-btn1 rounded" onClick={() => {completeHole(); completeRound();}}>COMPLETE ROUND</button>
             ) : (
-              <button className="sqr-btn1 rounded" onClick={completeHole}>
+              <button className="sqr-btn1 rounded" onClick={() => {completeHole(); handleCompleteHoleClick(currentHole + 1, strokeCount);}}>
                 COMPLETE HOLE
               </button>
             )}
