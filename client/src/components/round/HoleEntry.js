@@ -13,7 +13,6 @@ function HoleEntry({ setScores, scores, hole }) {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
 
-        
         const R = 6371e3;
         const φ1 = (latitude * Math.PI) / 180;
         const φ2 = (37.9891992 * Math.PI) / 180;
@@ -22,15 +21,20 @@ function HoleEntry({ setScores, scores, hole }) {
 
         const a =
           Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-          Math.cos(φ1) *
-            Math.cos(φ2) *
-            Math.sin(Δλ / 2) *
-            Math.sin(Δλ / 2);
+          Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         const d = (R * c) / 0.9144;
 
         setDistance(Math.round(d));
+        if (distance === 0) {
+          return (
+            <div className="loading">
+              <div className="spinner"></div>
+              <h1></h1>
+            </div>
+          );
+        }
       });
     }
   }, [hole]);
@@ -89,14 +93,18 @@ function HoleEntry({ setScores, scores, hole }) {
           <div className="row d-flex box rounded mb-2">
             <div className="col-4 text-light xs-text pt-1">
               <p className="d-flex justify-content-center">DISTANCE</p>
-              <p className="s-text d-flex justify-content-center pt-2 orange-text">{distance} yards</p>
+              <p className="s-text d-flex justify-content-center pt-2 orange-text">
+                {distance} yards
+              </p>
             </div>
             <div className="col-4 text-light">
               <p className="s-text d-flex justify-content-center mb-1 pt-1">
                 STROKES
               </p>
               <div className={`${swingFadeClass}`}>
-                <h1 className={`l-text d-flex justify-content-center ${puttFadeClass}`}>
+                <h1
+                  className={`l-text d-flex justify-content-center ${puttFadeClass}`}
+                >
                   {strokeCount}
                 </h1>
               </div>
@@ -120,7 +128,9 @@ function HoleEntry({ setScores, scores, hole }) {
               <p className="s-text d-flex justify-content-center mb-0 pt-2">
                 SWINGS
               </p>
-              <h1 className={`l-text d-flex justify-content-center align-items-center ${swingFadeClass}`}>
+              <h1
+                className={`l-text d-flex justify-content-center align-items-center ${swingFadeClass}`}
+              >
                 {swingCount}
               </h1>
             </div>
@@ -144,8 +154,12 @@ function HoleEntry({ setScores, scores, hole }) {
               </button>
             </div>
             <div className="col-4 text-light">
-              <p className="s-text d-flex justify-content-center mb-0 pt-2">PUTTS</p>
-              <h1 className={`l-text d-flex justify-content-center align-items-center ${puttFadeClass}`}>
+              <p className="s-text d-flex justify-content-center mb-0 pt-2">
+                PUTTS
+              </p>
+              <h1
+                className={`l-text d-flex justify-content-center align-items-center ${puttFadeClass}`}
+              >
                 {puttCount}
               </h1>
             </div>

@@ -7,8 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 function Scorecard({ scores = [] }) {
   return (
     <div>
-      
-      <table class="table">
+      <table className="table">
         {/* thead is your top HEADER row of table */}
         <thead>
           <tr>
@@ -46,7 +45,7 @@ function Scorecard({ scores = [] }) {
         </tbody>
       </table>
 
-      <table class="table">
+      <table className="table">
         {/* thead is your top HEADER row of table */}
         <thead>
           <tr>
