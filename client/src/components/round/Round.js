@@ -35,6 +35,7 @@ function Round() {
   const [puttCount, setPuttCount] = useState(0);
   const [swingFadeClass, setSwingFadeClass] = useState("");
   const [puttFadeClass, setPuttFadeClass] = useState("");
+  const [strokeFadeClass, setStrokeFadeClass] = useState("");
   const [distance, setDistance] = useState(null);
   const [holeStrokes, setHoleStrokes] = useState(Array(18).fill(0));
 
@@ -135,9 +136,23 @@ function Round() {
 
     let response = await request(config);
     setCurrentHole(currentHole + 1);
-    setStrokeCount(0);
+    setStrokeFadeClass("fade-out");
+    setTimeout(() => {
+      setStrokeCount(0);
+      setSwingFadeClass("fade-in");
+    }, 150);
+
+    setSwingFadeClass("fade-out");
+    setTimeout(() => {
     setSwingCount(0);
+    setSwingFadeClass("fade-in");
+  }, 150);
+
+  setPuttFadeClass("fade-out");
+    setTimeout(() => {
     setPuttCount(0);
+    setPuttFadeClass("fade-in");
+  }, 150);
     // console.log(currentHole);
   };
 
@@ -155,7 +170,7 @@ function Round() {
       setSwingCount(swingCount + 1);
       setStrokeCount(strokeCount + 1);
       setSwingFadeClass("fade-in");
-    }, 300);
+    }, 150);
   };
 
   const SwingDecrement = () => {
@@ -165,7 +180,7 @@ function Round() {
         setSwingCount(swingCount - 1);
         setStrokeCount(strokeCount - 1);
         setSwingFadeClass("fade-in");
-      }, 300);
+      }, 150);
     }
   };
 
@@ -175,7 +190,7 @@ function Round() {
       setPuttCount(puttCount + 1);
       setStrokeCount(strokeCount + 1);
       setPuttFadeClass("fade-in");
-    }, 300);
+    }, 150);
   };
 
   const PuttDecrement = () => {
@@ -185,7 +200,7 @@ function Round() {
         setPuttCount(puttCount - 1);
         setStrokeCount(strokeCount - 1);
         setPuttFadeClass("fade-in");
-      }, 300);
+      }, 150);
     }
   };
 

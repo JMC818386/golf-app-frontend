@@ -29,7 +29,7 @@ const getUser = async () => {
           method: 'GET',
       }
       let response = await request(options)
-      console.log(response.data)
+      // console.log(response.data)
       setData(response.data)
   }
   catch (error) {
