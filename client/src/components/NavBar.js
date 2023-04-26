@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import request from '../services/api.request';
 import AuthService from "../services/auth.service";
 import { useEffect, useState } from 'react';
+import logo from '../img/PocketPro_LogoType.png';
 
 function NavBar() {
   const [ state, dispatch ] = useGlobalState();
@@ -15,7 +16,7 @@ function NavBar() {
   const handleLogout = (e) => {
     e.preventDefault();
     AuthService.logout();
-    navigate('/logout-confirm');
+    navigate('/login');
     dispatch({
         currentUserToken: null,
         currentUser: null
@@ -49,8 +50,13 @@ useEffect(() => {
     <nav>
       <ul className="nav-bar">
         <li>
-          <Link className="nav-text" style={{ textDecoration: "none"}} to="/">Home</Link>
+          <Link to="/main">
+            <img className="logo-type" src={logo} style={{ width: 110 }} alt="Logo" />
+          </Link>
         </li>
+        {/* <li>
+          <Link className="nav-text" style={{ textDecoration: "none"}} to="/main">Home</Link>
+        </li> */}
         {
           !state.currentUser && (
             <li>

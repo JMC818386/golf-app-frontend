@@ -4,6 +4,7 @@
 .background {
     background: rgb(105,140,117);
     background: radial-gradient(circle, rgba(105,140,117,1) 0%, rgba(70,89,75,1) 53%, rgba(49,64,53,1) 94%);
+    min-height: 100vh;
 }
 
 .sqr-btn2-main {

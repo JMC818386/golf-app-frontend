@@ -5,6 +5,13 @@ import "bootstrap/dist/css/bootstrap.css";
 //  === props.scores.strokes OR scores.strokes
 
 function Scorecard({ scores = [] }) {
+  const holeScores = Array(18).fill(0);
+  console.log(scores);
+
+  scores.forEach((score) => {
+    holeScores[score.hole_number - 1] = score.strokes;
+  });
+
   return (
     <div>
       <table className="table">
@@ -30,17 +37,17 @@ function Scorecard({ scores = [] }) {
           <tr>
             <th scope="row">F</th>
             {/* td is where the data in a row goes aka a bunch of strokes or 0s */}
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || "-"}</td>
+            <td>{holeScores[0]}</td>
+            <td>{holeScores[1]}</td>
+            <td>{holeScores[2]}</td>
+            <td>{holeScores[3]}</td>
+            <td>{holeScores[4]}</td>
+            <td>{holeScores[5]}</td>
+            <td>{holeScores[6]}</td>
+            <td>{holeScores[7]}</td>
+            <td>{holeScores[8]}</td>
+            <td>{holeScores.slice(0,8).reduce((a, b) => a + b, 0)}</td>
+            <td>-</td>
           </tr>
         </tbody>
       </table>
@@ -68,17 +75,18 @@ function Scorecard({ scores = [] }) {
           <tr>
             <th scope="row">B</th>
             {/* td is where the data in a row goes aka a bunch of strokes or 0s */}
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
-            <td>{scores?.strokes || 0}</td>
+            <td>{holeScores[9]}</td>
+            <td>{holeScores[10]}</td>
+            <td>{holeScores[11]}</td>
+            <td>{holeScores[12]}</td>
+            <td>{holeScores[13]}</td>
+            <td>{holeScores[14]}</td>
+            <td>{holeScores[15]}</td>
+            <td>{holeScores[16]}</td>
+            <td>{holeScores[17]}</td>
+            <td>{holeScores.slice(8).reduce((a, b) => a + b, 0)}</td>
+            <td>{holeScores.reduce((a, b) => a + b, 0)}</td>
+
           </tr>
         </tbody>
       </table>

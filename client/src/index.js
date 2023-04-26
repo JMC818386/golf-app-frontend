@@ -10,9 +10,6 @@ import Round from "./components/round/Round";
 import RoundHistory from "./components/round/RoundHistory.js";
 import RoundSetup from "./components/round/RoundSetup";
 import Main from "./components/Main";
-import LogInConfirm from "./components/user/LoginConfirm";
-import LogOutConfirm from "./components/user/LogOutConfirm";
-import CreateConfirm from "./components/user/CreateConfirm";
 import { GlobalProvider } from "./context/GlobalState";
 import { Redirect } from 'react-router-dom';
 
@@ -29,9 +26,6 @@ root.render(
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="create-confirm" element={<CreateConfirm />} />
-            <Route path="login-confirm" element={<LogInConfirm />} />
-            <Route path="logout-confirm" element={<LogOutConfirm />} />
             <Route path="round/:roundId/:courseId" element={<Round />} />
             <Route path="round-history" element={<RoundHistory />} />
             <Route path="round-setup" element={<RoundSetup />} />

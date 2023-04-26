@@ -3,10 +3,11 @@ import AuthService from "../../services/auth.service";
 import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./User.css";
-import CreateConfirm from "./CreateConfirm";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
   let navigate = useNavigate();
+  
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -25,7 +26,7 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    AuthService.register(user).then(() => navigate("/create-confirm"));
+    AuthService.register(user).then(() => navigate("/profile"));
   };
 
   return (
@@ -137,6 +138,7 @@ const Register = () => {
                         : true
                     }
                   />
+                    
                 </div>
               </div>
             </form>

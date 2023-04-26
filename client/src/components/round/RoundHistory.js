@@ -5,18 +5,20 @@ import RoundCard from "./RoundCard";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../../services/auth.constants";
+import { useGlobalState } from "../../context/GlobalState";
+import request from "../../services/api.request";
 
 function RoundHistory() {
   const [rounds, setRounds] = useState([]);
+  const [state, dispatch] = useGlobalState();
 
   useEffect(() => {
     const getRoundCard = async () => {
       let config = {
         url: `/rounds/`,
-        baseURL: API_URL,
         method: "get",
       };
-      let response = await axios.request(config);
+      let response = await request(config);
       setRounds(response.data);
       // console.log(response.data);
     };

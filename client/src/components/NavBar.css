@@ -4,6 +4,9 @@
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Hind', sans-serif; */
 
+
+
+
 .nav-bar {
     display: flex;
     justify-content: space-around;
@@ -17,6 +20,7 @@ font-family: 'Hind', sans-serif; */
 .nav-text {
     color: #F2EFDF;
     font-family: 'Hind', sans-serif;
+    font-size: 15px;
 
 }
 

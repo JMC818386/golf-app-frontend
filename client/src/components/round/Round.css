@@ -123,7 +123,12 @@ font-family: 'Hind', sans-serif; */
     color: white;
     font-family: 'Montserrat', sans-serif;
     padding: 3px 0px 3px 0px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.names {
+    padding: 3px;
 }
 
 .sqr-btn2:active,
@@ -157,6 +162,13 @@ font-family: 'Hind', sans-serif; */
     font-family: 'Montserrat', sans-serif;
     text-align: end;
     margin-top: -22px;
+}
+
+
+.course-name {
+    font-size: 15px;
+    color: #F2EFDF;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .xs-text-mont {

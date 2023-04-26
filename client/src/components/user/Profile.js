@@ -20,8 +20,9 @@ const Profile = () => {
       <div className="row  d-flex justify-content-center mt-5">
         <div className="d-flex flex-column mt-5">
           <h1 className="l-text d-flex justify-content-center">
-            Your user id number is: {state.currentUser?.user_id}.
+            Welcome! Your user id number is: {state.currentUser?.user_id}.
           </h1>
+          <a href="/main">Start Your First Round</a>
         </div>
       </div>
     </div>

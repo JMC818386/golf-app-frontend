@@ -108,6 +108,7 @@ function Round() {
       };
       let response = await axios.request(config);
       setHoles(response.data);
+      console.log(response.data);
     };
     getHoles();
   }, [courseId]);
@@ -153,16 +154,12 @@ function Round() {
     setPuttCount(0);
     setPuttFadeClass("fade-in");
   }, 150);
-    // console.log(currentHole);
   };
 
   const completeRound = () => {
     updateScore();
     navigate("/round-history");
   }
-
-
-  // console.log(holes);
 
   const SwingIncrement = () => {
     setSwingFadeClass("fade-out");
@@ -220,11 +217,11 @@ function Round() {
       <div className="container p-3 d-flex justify-content-center align-items-center h-100">
         {/* {holes.map((hole) => { */}
         <div className="row d-flex justify-content-center">
-          {/* <p>{courseId}</p> */}
           <div
             className="col vstack gap-1 d-flex justify-content-center"
             key={holes[currentHole]?.id}
           >
+            <p className="sm-text text-light d-flex justify-content-center">{holes[0]?.course_name}</p>
             <div className="row d-flex box rounded align-items-baseline mb-2">
               <div className="col-4 text-light s-text">
                 <p className="s-text d-flex justify-content-center">

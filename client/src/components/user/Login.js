@@ -7,7 +7,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./User.css";
 import { Link } from "react-router-dom";
 
+
 const Login = () => {
+
+
   let navigate = useNavigate();
 
   const [ state, dispatch ] = useGlobalState();
@@ -26,7 +29,7 @@ const Login = () => {
           currentUserToken: resp.access,
           currentUser: data
         })
-        navigate('/login-confirm')
+        navigate('/main')
       });
   }
 
@@ -83,3 +86,11 @@ const Login = () => {
 }
 
 export default Login
+
+/* 
+#314035 Dark Green
+#698C75 Light Green
+#46594B Mid Green
+#F2EFDF Off White
+#F2A74B Orange 
+*/
