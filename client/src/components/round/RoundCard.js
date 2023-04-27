@@ -10,6 +10,7 @@ function RoundCard({ rounds = [] }) {
   const [scores, setScores] = useState([]);
   const [sortDirection, setSortDirection] = useState("asc");
   const [sortOrder, setSortOrder] = useState("stroke_total");
+  const [filter, setFilter] = useState("");
   //   This is what the JSX will look like now, but you will need to map over all rounds when you have more than one which could change that slightly.
   //   console.log(rounds[0]?.course_name);
   // console.log(rounds);
@@ -23,7 +24,7 @@ function RoundCard({ rounds = [] }) {
       };
       let response = await axios.request(config);
       setScores(response.data);
-      console.log(response.data)
+      console.log(response.data);
     };
     getRoundScores();
   }, []);
@@ -34,6 +35,10 @@ function RoundCard({ rounds = [] }) {
 
   const handleSortOrderChange = (event) => {
     setSortOrder(event.target.value);
+  };
+
+  const handleFilterChange = (event) => {
+    setFilter(event.target.value);
   };
 
   const sortedRounds = rounds.sort((a, b) => {
@@ -48,21 +53,40 @@ function RoundCard({ rounds = [] }) {
     }
   });
 
+  const filteredRounds = filter
+    ? sortedRounds.filter((round) => round.course_name.includes(filter))
+    : sortedRounds;
+
   // //Sorts stroke_total from highest to lowest (DESC)
   // rounds.sort((a, b) => b.stroke_total - a.stroke_total);
 
   // //Sorts stroke_total from highest to lowest (DESC)
   // rounds.sort((a, b) => a.stroke_total - b.stroke_total);
-  
+
   return (
-    <div className="container mx-3 my-5">
+    <div className="containermx-3">
       <div className="row d-flex align-items-center justify-content-center flex-row mb-3">
-        <div className="col-6 d-flex flex-column direction">
-          <label htmlFor="sort-direction">Sort Direction:</label>
+        <div className="col-6 d-flex justify-content-center flex-column sort s-text">
+          <label htmlFor="sort-order">Sort By</label>
+          <div className="div">
+            <select
+              id="sort-order"
+              className="form-select mx-2 sort-direction s-text"
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+            >
+              <option value="stroke_total">Total Score</option>
+              <option value="date">Date</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="col-6 d-flex flex-column direction s-text">
+          <label htmlFor="sort-direction">Sort Direction</label>
           <div className="div">
             <select
               id="sort-direction"
-              className="form-select mx-2 sort-direction"
+              className="form-select mx-2 sort-direction s-text"
               value={sortDirection}
               onChange={handleSortDirectionChange}
             >
@@ -72,23 +96,32 @@ function RoundCard({ rounds = [] }) {
           </div>
         </div>
 
-        <div className="col-6 d-flex justify-content-center flex-column sort">
-          <label htmlFor="sort-order">Sort Order:</label>
-          <div className="div">
-            <select
-              id="sort-order"
-              className="form-select mx-2 sort-direction"
-              value={sortOrder}
-              onChange={handleSortOrderChange}
+        <div className="row d-flex justify-content-center flex-column s-text">
+          <div className="col justify-content-center">
+            <span className="d-flex justify-content-center mt-3">Filter by Course</span>
+            <div className="input-group d-flex justify-content-center">
+              <select
+                className="form-control filter s-text "
+                value={filter}
+                onChange={handleFilterChange}
               >
-              <option value="stroke_total">Total Strokes</option>
-              <option value="date">Date</option>
-            </select>
+                <option value="">All Courses</option>
+                {rounds.map((round) => (
+                  <option key={round.course_id} value={round.course_name}>
+                    {round.course_name}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
       </div>
-      {rounds.map((round) => (
-        <div key={round.id} className="container card d-flex justify-content-center mb-3">
+
+      {filteredRounds.map((round) => (
+        <div
+          key={round.id}
+          className="container card d-flex justify-content-center mb-3"
+        >
           <div className="row d-flex flex-row">
             <div className="col-8 pt-2 px-4">
               <div className="div ml-3">
