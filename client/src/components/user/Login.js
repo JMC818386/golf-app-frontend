@@ -6,6 +6,8 @@ import jwtDecode from "jwt-decode";
 import "bootstrap/dist/css/bootstrap.css";
 import "./User.css";
 import { Link } from "react-router-dom";
+import logo from '../../img/PocketPro_LogoMark.png';
+
 
 
 const Login = () => {
@@ -34,12 +36,13 @@ const Login = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container d-flex justify-content-center">
       <div className="row mt-5">
         <div className="col mt-5">
-          <div className="c-form mt-5">
+            <img className="logo" src={logo} alt="Logo" />
+          <div className="c-form">
             <form onSubmit={handleLogin}>
-              <p className="d-flex justify-content-center p-2 mb-1 mt-5 s-text">Username</p>
+              <p className="d-flex justify-content-center p-2 mb-1 s-text">Username</p>
               <div className="d-flex justify-content-center">
                 <label htmlFor="username"></label>
                 <input

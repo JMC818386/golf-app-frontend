@@ -8,6 +8,8 @@ import request from "../../services/api.request";
 
 function RoundCard({ rounds = [] }) {
   const [scores, setScores] = useState([]);
+  const [sortDirection, setSortDirection] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("stroke_total");
   //   This is what the JSX will look like now, but you will need to map over all rounds when you have more than one which could change that slightly.
   //   console.log(rounds[0]?.course_name);
   // console.log(rounds);
@@ -26,10 +28,65 @@ function RoundCard({ rounds = [] }) {
     getRoundScores();
   }, []);
 
+  const handleSortDirectionChange = (event) => {
+    setSortDirection(event.target.value);
+  };
 
+  const handleSortOrderChange = (event) => {
+    setSortOrder(event.target.value);
+  };
+
+  const sortedRounds = rounds.sort((a, b) => {
+    if (sortOrder === "stroke_total") {
+      return sortDirection === "asc"
+        ? a.stroke_total - b.stroke_total
+        : b.stroke_total - a.stroke_total;
+    } else {
+      return sortDirection === "asc"
+        ? a.date.localeCompare(b.date)
+        : b.date.localeCompare(a.date);
+    }
+  });
+
+  // //Sorts stroke_total from highest to lowest (DESC)
+  // rounds.sort((a, b) => b.stroke_total - a.stroke_total);
+
+  // //Sorts stroke_total from highest to lowest (DESC)
+  // rounds.sort((a, b) => a.stroke_total - b.stroke_total);
   
   return (
-    <div className="mx-3 my-5">
+    <div className="container mx-3 my-5">
+      <div className="row d-flex align-items-center justify-content-center flex-row mb-3">
+        <div className="col-6 d-flex flex-column direction">
+          <label htmlFor="sort-direction">Sort Direction:</label>
+          <div className="div">
+            <select
+              id="sort-direction"
+              className="form-select mx-2 sort-direction"
+              value={sortDirection}
+              onChange={handleSortDirectionChange}
+            >
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="col-6 d-flex justify-content-center flex-column sort">
+          <label htmlFor="sort-order">Sort Order:</label>
+          <div className="div">
+            <select
+              id="sort-order"
+              className="form-select mx-2 sort-direction"
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+              >
+              <option value="stroke_total">Total Strokes</option>
+              <option value="date">Date</option>
+            </select>
+          </div>
+        </div>
+      </div>
       {rounds.map((round) => (
         <div key={round.id} className="container card d-flex justify-content-center mb-3">
           <div className="row d-flex flex-row">
