@@ -2,34 +2,19 @@ import { useState, useEffect } from "react";
 import "./Round.css";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
-import HoleEntry from "./HoleEntry";
-import RoundScorecard from "./RoundScorecard";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../../services/auth.constants";
 import { useGlobalState } from "../../context/GlobalState";
 import request from "../../services/api.request";
 import { useNavigate } from "react-router-dom";
-// import { useAuth } from "../../contexts/GlobalState";
 
-// When you click Complete Hole, make a PATCH request to update the round
-// Have another useEffect to get the Round data to update everytime round data changes
-// Save that round data into scores hook
-// Pass scores as props to RoundScorecard
-// Access scores within scorecard
 function Round() {
   let navigate = useNavigate();
   let { roundId, courseId } = useParams();
-  // const { authToken } = useAuth();
   const [state, dispatch] = useGlobalState();
-
   const [holes, setHoles] = useState([]);
   const [scores, setScores] = useState([]);
-  // const [scores, setScores] = useState(
-  //   Array(holes.length).fill({ strokeCount: 0, swingCount: 0, puttCount: 0 })
-  // );
   const [currentHole, setCurrentHole] = useState(0);
-  // const [courseId, setCourseId] = useState(0);
-  // TODO: set up a roundId state variable
   const [strokeCount, setStrokeCount] = useState(0);
   const [swingCount, setSwingCount] = useState(0);
   const [puttCount, setPuttCount] = useState(0);
@@ -38,7 +23,10 @@ function Round() {
   const [strokeFadeClass, setStrokeFadeClass] = useState("");
   const [distance, setDistance] = useState(null);
   const [holeStrokes, setHoleStrokes] = useState(Array(18).fill(0));
-
+  const [round, setRound] = useState([]);
+  const [strokes, setStrokes] = useState(0);
+  const [par, setPar] = useState(0);
+  const [scoreDifference, setScoreDifference] = useState(0);
 
   const handleCompleteHoleClick = (holeNumber, strokes) => {
     // Update the stroke count for the given hole
@@ -51,6 +39,38 @@ function Round() {
   const backNineScore = holeStrokes.slice(9).reduce((a, b) => a + b, 0);
   const totalScore = frontNineScore + backNineScore;
 
+  // TODO: get the correct to-par info into current round
+  // useEffect(() => {
+  const getRoundData = async () => {
+    let config = {
+      url: `/rounds/${roundId}/`,
+      method: "get",
+    };
+    let response = await request(config);
+    setRound(response.data);
+    // console.log(response.data);
+  };
+  // getRoundData();
+  // }, []);
+  // console.log(round);
+
+  useEffect(() => {
+    const getHoles = async () => {
+      let config = {
+        url: `/holes/`,
+        baseURL: API_URL,
+        method: "get",
+        params: {
+          selected_course: courseId,
+        },
+      };
+      let response = await axios.request(config);
+      setHoles(response.data);
+      // console.log(response.data);
+    };
+    getHoles();
+  }, [courseId]);
+
   //Distance from green calcuation function:
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -59,9 +79,10 @@ function Round() {
 
         const R = 6371e3;
         const φ1 = (latitude * Math.PI) / 180;
-        const φ2 = (37.9891992 * Math.PI) / 180;
-        const Δφ = ((37.9891992 - latitude) * Math.PI) / 180;
-        const Δλ = ((-84.4722445 - longitude) * Math.PI) / 180;
+        const φ2 = (holes[currentHole]?.latitude * Math.PI) / 180;
+        const Δφ = ((holes[currentHole]?.latitude - latitude) * Math.PI) / 180;
+        const Δλ =
+          ((holes[currentHole]?.longitude - longitude) * Math.PI) / 180;
 
         const a =
           Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
@@ -81,37 +102,7 @@ function Round() {
         }
       });
     }
-  }, [currentHole]);
-
-  // This gets all the hole information based on rounds
-  useEffect(() => {
-    // const viewRound = async () => {
-    //   let config = {
-    //     url: `/rounds/${roundId}`,
-    //     baseURL: BASE_URL,
-    //     method: "get",
-    //   };
-    //   let response = await axios.request(config);
-    //   console.log(response.data);
-    //   currentRound(response.data);
-    // };
-    // viewRound();
-
-    const getHoles = async () => {
-      let config = {
-        url: `/holes/`,
-        baseURL: API_URL,
-        method: "get",
-        params: {
-          selected_course: courseId,
-        },
-      };
-      let response = await axios.request(config);
-      setHoles(response.data);
-      console.log(response.data);
-    };
-    getHoles();
-  }, [courseId]);
+  }, [currentHole, distance]);
 
   const updateScore = (newScore) => {
     const newScores = [...scores];
@@ -145,21 +136,23 @@ function Round() {
 
     setSwingFadeClass("fade-out");
     setTimeout(() => {
-    setSwingCount(0);
-    setSwingFadeClass("fade-in");
-  }, 150);
+      setSwingCount(0);
+      setSwingFadeClass("fade-in");
+    }, 150);
 
-  setPuttFadeClass("fade-out");
+    setPuttFadeClass("fade-out");
     setTimeout(() => {
-    setPuttCount(0);
-    setPuttFadeClass("fade-in");
-  }, 150);
+      setPuttCount(0);
+      setPuttFadeClass("fade-in");
+    }, 150);
+
+    getRoundData();
   };
 
   const completeRound = () => {
     updateScore();
     navigate("/round-history");
-  }
+  };
 
   const SwingIncrement = () => {
     setSwingFadeClass("fade-out");
@@ -221,7 +214,9 @@ function Round() {
             className="col vstack gap-1 d-flex justify-content-center"
             key={holes[currentHole]?.id}
           >
-            <p className="sm-text text-light d-flex justify-content-center">{holes[0]?.course_name}</p>
+            <p className="sm-text text-light d-flex justify-content-center">
+              {holes[0]?.course_name}
+            </p>
             <div className="row d-flex box rounded align-items-baseline mb-2">
               <div className="col-4 text-light s-text">
                 <p className="s-text d-flex justify-content-center">
@@ -261,7 +256,11 @@ function Round() {
               </div>
               <div className="col-4 text-light s-text">
                 <p className="s-text d-flex justify-content-center pt-1">-/+</p>
-                <h1 className="l-text d-flex justify-content-center"></h1>
+                <h1 className="m-text d-flex justify-content-center">
+                  {"-"}
+                  {/* TODO: update the above line to the below line once to-par score is working */}
+                  {/* {round.strokes_difference || "-"} */}
+                </h1>
               </div>
             </div>
 
@@ -323,7 +322,7 @@ function Round() {
               </div>
             </div>
 
-          {/* Scorecard Tables */}
+            {/* Scorecard Tables */}
             <div>
               <table className="table">
                 {/* thead is your top HEADER row of table */}
@@ -351,6 +350,7 @@ function Round() {
                       <td key={index}>{strokes}</td>
                     ))}
                     <td>{frontNineScore}</td>
+                    <td>-</td>
                   </tr>
                 </tbody>
               </table>
@@ -388,9 +388,23 @@ function Round() {
             </div>
 
             {isLastHole ? (
-              <button className="sqr-btn1 rounded" onClick={() => {completeHole(); completeRound();}}>COMPLETE ROUND</button>
+              <button
+                className="sqr-btn1 rounded"
+                onClick={() => {
+                  completeHole();
+                  completeRound();
+                }}
+              >
+                COMPLETE ROUND
+              </button>
             ) : (
-              <button className="sqr-btn1 rounded" onClick={() => {completeHole(); handleCompleteHoleClick(currentHole + 1, strokeCount);}}>
+              <button
+                className="sqr-btn1 rounded"
+                onClick={() => {
+                  completeHole();
+                  handleCompleteHoleClick(currentHole + 1, strokeCount);
+                }}
+              >
                 COMPLETE HOLE
               </button>
             )}
