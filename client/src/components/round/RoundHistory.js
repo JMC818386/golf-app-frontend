@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.css";
-// import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./Round.css";
 import RoundCard from "./RoundCard";
 import React, { useState, useEffect } from "react";
@@ -20,7 +19,6 @@ function RoundHistory() {
       };
       let response = await request(config);
       setRounds(response.data);
-      // console.log(response.data);
     };
     getRoundCard();
   }, []);

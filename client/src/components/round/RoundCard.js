@@ -11,9 +11,6 @@ function RoundCard({ rounds = [] }) {
   const [sortDirection, setSortDirection] = useState("asc");
   const [sortOrder, setSortOrder] = useState("stroke_total");
   const [filter, setFilter] = useState("");
-  //   This is what the JSX will look like now, but you will need to map over all rounds when you have more than one which could change that slightly.
-  //   console.log(rounds[0]?.course_name);
-  // console.log(rounds);
 
   useEffect(() => {
     const getRoundScores = async () => {
@@ -56,12 +53,6 @@ function RoundCard({ rounds = [] }) {
   const filteredRounds = filter
     ? sortedRounds.filter((round) => round.course_name.includes(filter))
     : sortedRounds;
-
-  // //Sorts stroke_total from highest to lowest (DESC)
-  // rounds.sort((a, b) => b.stroke_total - a.stroke_total);
-
-  // //Sorts stroke_total from highest to lowest (DESC)
-  // rounds.sort((a, b) => a.stroke_total - b.stroke_total);
 
   return (
     <div className="containermx-3">

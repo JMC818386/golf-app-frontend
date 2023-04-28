@@ -29,7 +29,6 @@ function Round() {
   const [scoreDifference, setScoreDifference] = useState(0);
 
   const handleCompleteHoleClick = (holeNumber, strokes) => {
-    // Update the stroke count for the given hole
     const newHoleStrokes = [...holeStrokes];
     newHoleStrokes[holeNumber - 1] = strokes;
     setHoleStrokes(newHoleStrokes);
@@ -48,11 +47,8 @@ function Round() {
     };
     let response = await request(config);
     setRound(response.data);
-    // console.log(response.data);
   };
-  // getRoundData();
-  // }, []);
-  // console.log(round);
+
 
   useEffect(() => {
     const getHoles = async () => {
@@ -111,9 +107,7 @@ function Round() {
   };
 
   const completeHole = async () => {
-    // TODO: POST Hole Score to Round
     updateScore(scores[currentHole]);
-    // const { strokeCount, swingCount, puttCount } = scores[currentHole];
     let config = {
       url: `/hole-scores/`,
       method: "post",
@@ -207,19 +201,19 @@ function Round() {
 
   return (
     <div>
-      <div className="container p-3 d-flex justify-content-center align-items-center h-100">
-        {/* {holes.map((hole) => { */}
+      <div className="container d-flex justify-content-center align-items-center h-100">
         <div className="row d-flex justify-content-center">
           <div
             className="col vstack gap-1 d-flex justify-content-center"
             key={holes[currentHole]?.id}
           >
-            <p className="sm-text text-light d-flex justify-content-center">
+            <p className="text-title d-flex justify-content-center mb-0">
               {holes[0]?.course_name}
             </p>
-            <div className="row d-flex box rounded align-items-baseline mb-2">
+            <div className="row d-flex box rounded align-items-center mb-2">
               <div className="col-4 text-light s-text">
-                <p className="s-text d-flex justify-content-center">
+                <p className="d-flex xs-text justify-content-center mb-0">DISTANCE</p>
+                <p className="s-text d-flex justify-content-center mb-0">
                   {holes[currentHole]?.distance} yards
                 </p>
               </div>
@@ -229,16 +223,16 @@ function Round() {
                 </h1>
               </div>
               <div className="col-4 text-light s-text">
-                <p className="s-text d-flex justify-content-center">
+                <p className="s-text d-flex justify-content-center pt-3">
                   Par {holes[currentHole]?.par}
                 </p>
               </div>
             </div>
 
-            <div className="row d-flex box rounded mb-2">
+            <div className="row box d-flex align-items-center rounded mb-2">
               <div className="col-4 text-light xs-text pt-1">
-                <p className="d-flex justify-content-center">DISTANCE</p>
-                <p className="s-text d-flex justify-content-center pt-2 orange-text">
+                <p className="d-flex justify-content-center mb-0 ">CURRENT DISTANCE</p>
+                <p className="s-text d-flex justify-content-center orange-text mb-0">
                   {distance} yards
                 </p>
               </div>
@@ -321,11 +315,8 @@ function Round() {
                 </button>
               </div>
             </div>
-
-            {/* Scorecard Tables */}
             <div>
               <table className="table">
-                {/* thead is your top HEADER row of table */}
                 <thead>
                   <tr>
                     <th scope="col"></th>
@@ -343,7 +334,6 @@ function Round() {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* tr a row in the table */}
                   <tr>
                     <td>F</td>
                     {holeStrokes.slice(0, 9).map((strokes, index) => (
@@ -356,7 +346,6 @@ function Round() {
               </table>
 
               <table className="table">
-                {/* thead is your top HEADER row of table */}
                 <thead>
                   <tr>
                     <th scope="col"></th>
@@ -374,7 +363,6 @@ function Round() {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* tr a row in the table */}
                   <tr>
                     <td>B</td>
                     {holeStrokes.slice(9).map((strokes, index) => (
@@ -410,7 +398,6 @@ function Round() {
             )}
           </div>
         </div>
-        {/* })} */}
       </div>
     </div>
   );

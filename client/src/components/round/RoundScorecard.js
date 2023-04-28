@@ -1,8 +1,6 @@
 import "./Round.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-// (props) OR {scores}
-//  === props.scores.strokes OR scores.strokes
 
 function Scorecard({ scores = [] }) {
   const holeScores = Array(18).fill(0);
@@ -15,7 +13,6 @@ function Scorecard({ scores = [] }) {
   return (
     <div>
       <table className="table">
-        {/* thead is your top HEADER row of table */}
         <thead>
           <tr>
             <th scope="col"></th>
@@ -33,10 +30,8 @@ function Scorecard({ scores = [] }) {
           </tr>
         </thead>
         <tbody>
-          {/* tr a row in the table */}
           <tr>
             <th scope="row">F</th>
-            {/* td is where the data in a row goes aka a bunch of strokes or 0s */}
             <td>{holeScores[0]}</td>
             <td>{holeScores[1]}</td>
             <td>{holeScores[2]}</td>
@@ -53,7 +48,6 @@ function Scorecard({ scores = [] }) {
       </table>
 
       <table className="table">
-        {/* thead is your top HEADER row of table */}
         <thead>
           <tr>
             <th scope="col"></th>
@@ -71,10 +65,8 @@ function Scorecard({ scores = [] }) {
           </tr>
         </thead>
         <tbody>
-          {/* tr a row in the table */}
           <tr>
             <th scope="row">B</th>
-            {/* td is where the data in a row goes aka a bunch of strokes or 0s */}
             <td>{holeScores[9]}</td>
             <td>{holeScores[10]}</td>
             <td>{holeScores[11]}</td>

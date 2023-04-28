@@ -74,7 +74,7 @@ function RoundSetup() {
 
   return (
     <div className="container d-flex justify-content-center vh-100">
-      <div className="row mt-5">
+      <div className="row">
         <div className="col mt-5">
           <div className="d-flex flex-column justify-content-center">
             <div className="d-flex justify-content-center mb-4 text-light">
@@ -102,24 +102,9 @@ function RoundSetup() {
                 </div>
               </div>
             </div>
-            {/* <div className="d-flex justify-content-center mt-5 text-light">
-              <h1>Round Setup</h1>
-            </div> */}
-            {/* <div className="container d-flex justify-content-center">
-              <div className="row d-flex">
-                <div className="col-6 d-flex flex-row">
-
-                  <button className="mx-3 my-4 px-4 py-3 sqr-btn2">9</button>
-                  <button className="mx-3 my-4 px-4 py-3 sqr-btn2">18</button>
-                </div>
-              </div>
-            </div> */}
             <div className="container d-flex justify-content-center">
               <div className="row">
                 <div className="col">
-                  {/* <button onClick={() => newRound(selectedCourse, 18, 0)}>
-                    submit round
-                  </button> */}
                   <button
                     onClick={() => newRound(selectedCourse, 18, 0)}
                     className="m-1 p-3 sqr-btn1"
