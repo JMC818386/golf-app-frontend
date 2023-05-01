@@ -7,13 +7,20 @@ import { API_URL } from "../../services/auth.constants";
 import { useGlobalState } from "../../context/GlobalState";
 import request from "../../services/api.request";
 import NavBar from "../NavBar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function RoundHistory() {
+  let navigate = useNavigate();
   const [rounds, setRounds] = useState([]);
   const [state, dispatch] = useGlobalState();
 
+
+
   useEffect(() => {
+    if (!state.currentUser) {
+      navigate("/login");
+    }
+
     const getRoundCard = async () => {
       let config = {
         url: `/rounds/`,
