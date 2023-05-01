@@ -4,7 +4,26 @@
 
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Hind', sans-serif; */
-
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    outline: none;
+    background-color: #fff;
+  }
+  
+  input[type="checkbox"]:checked {
+    background-color: #F2A74B;
+    border-color: #F2A74B;
+  }
+  
+  input[type="checkbox"]:hover {
+    cursor: pointer;
+  }
 
 .text-title {
     font-size: 15px;

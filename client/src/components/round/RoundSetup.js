@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./Round.css";
 import { API_URL } from "../../services/auth.constants";
 import request from "../../services/api.request";
 import { useGlobalState } from "../../context/GlobalState";
+import NavBar from "../NavBar";
 
 function RoundSetup() {
   let navigate = useNavigate();
@@ -73,45 +74,50 @@ function RoundSetup() {
   // console.log(currentRound);
 
   return (
-    <div className="container d-flex justify-content-center vh-100">
-      <div className="row">
-        <div className="col mt-5">
-          <div className="d-flex flex-column justify-content-center">
-            <div className="d-flex justify-content-center mb-4 text-light">
-              <h1>Select a Course</h1>
-            </div>
-            <input
-              type="text"
-              placeholder="Search Courses"
-              value={searchValue}
-              className="border-0 p-1"
-              onChange={handleSearchChange}
-            />
-            <div className="containter">
-              <div className="row">
-                <div className="col names mb-5 d-flex flex-column justify-content-center">
-                  {filteredCourses.map((course) => (
-                    <button
-                      className="px-3 py-2 sqr-btn2"
-                      key={course.id}
-                      onClick={() => handleCourseClick(course.id)}
-                    >
-                      {course.name}
-                    </button>
-                  ))}
+
+    <div className="background">
+      <NavBar />
+      <Outlet />
+      <div className="container d-flex justify-content-center vh-100">
+        <div className="row">
+          <div className="col mt-5">
+            <div className="d-flex flex-column justify-content-center">
+              <div className="d-flex justify-content-center mb-4 text-light">
+                <h1>Select a Course</h1>
+              </div>
+              <input
+                type="text"
+                placeholder="Search Courses"
+                value={searchValue}
+                className="border-0 p-1"
+                onChange={handleSearchChange}
+              />
+              <div className="containter">
+                <div className="row">
+                  <div className="col names mb-5 d-flex flex-column justify-content-center">
+                    {filteredCourses.map((course) => (
+                      <button
+                        className="px-3 py-2 sqr-btn2"
+                        key={course.id}
+                        onClick={() => handleCourseClick(course.id)}
+                      >
+                        {course.name}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="container d-flex justify-content-center">
-              <div className="row">
-                <div className="col">
-                  <button
-                    onClick={() => newRound(selectedCourse, 18, 0)}
-                    className="m-1 p-3 sqr-btn1"
-                    disabled={!selectedCourse}
-                  >
-                    BEGIN ROUND
-                  </button>
+              <div className="container d-flex justify-content-center">
+                <div className="row">
+                  <div className="col">
+                    <button
+                      onClick={() => newRound(selectedCourse, 18, 0)}
+                      className="m-1 p-3 sqr-btn1"
+                      disabled={!selectedCourse}
+                    >
+                      BEGIN ROUND
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -119,6 +125,7 @@ function RoundSetup() {
         </div>
       </div>
     </div>
+    
   );
 }
 

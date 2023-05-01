@@ -8,9 +8,11 @@ import request from "../../services/api.request";
 
 function RoundCard({ rounds = [] }) {
   const [scores, setScores] = useState([]);
-  const [sortDirection, setSortDirection] = useState("asc");
-  const [sortOrder, setSortOrder] = useState("stroke_total");
+  const [sortDirection, setSortDirection] = useState("desc");
+  const [sortOrder, setSortOrder] = useState("date");
   const [filter, setFilter] = useState("");
+
+  const uniqueCourseNames = [...new Set(rounds.map(round => round.course_name))];
 
   useEffect(() => {
     const getRoundScores = async () => {
@@ -58,32 +60,60 @@ function RoundCard({ rounds = [] }) {
     <div className="containermx-3">
       <div className="row d-flex align-items-center justify-content-center flex-row mb-3">
         <div className="col-6 d-flex justify-content-center flex-column sort s-text">
-          <label htmlFor="sort-order">Sort By</label>
-          <div className="div">
-            <select
-              id="sort-order"
-              className="form-select mx-2 sort-direction s-text"
-              value={sortOrder}
+          <div className="form-check">
+            <input
+              type="checkbox"
+              id="sort-by-total-score"
+              className="form-check-input mx-2"
+              checked={sortOrder === "stroke_total"}
               onChange={handleSortOrderChange}
-            >
-              <option value="stroke_total">Total Score</option>
-              <option value="date">Date</option>
-            </select>
+              value="stroke_total"
+            />
+            <label htmlFor="sort-by-total-score" className="form-check-label">
+              Total Score
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              id="sort-by-date"
+              className="form-check-input mx-2"
+              checked={sortOrder === "date"}
+              onChange={handleSortOrderChange}
+              value="date"
+            />
+            <label htmlFor="sort-by-date" className="form-check-label">
+              Date
+            </label>
           </div>
         </div>
 
         <div className="col-6 d-flex flex-column direction s-text">
-          <label htmlFor="sort-direction">Sort Direction</label>
-          <div className="div">
-            <select
-              id="sort-direction"
-              className="form-select mx-2 sort-direction s-text"
-              value={sortDirection}
+          <div className="form-check">
+            <input
+              type="checkbox"
+              id="sort-direction-asc"
+              className="form-check-input mx-2"
+              checked={sortDirection === "asc"}
               onChange={handleSortDirectionChange}
-            >
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
-            </select>
+              value="asc"
+            />
+            <label htmlFor="sort-direction-asc" className="form-check-label">
+              Ascending
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              id="sort-direction-desc"
+              className="form-check-input mx-2"
+              checked={sortDirection === "desc"}
+              onChange={handleSortDirectionChange}
+              value="desc"
+            />
+            <label htmlFor="sort-direction-desc" className="form-check-label">
+              Descending
+            </label>
           </div>
         </div>
 
@@ -97,9 +127,9 @@ function RoundCard({ rounds = [] }) {
                 onChange={handleFilterChange}
               >
                 <option value="">All Courses</option>
-                {rounds.map((round) => (
-                  <option key={round.course_id} value={round.course_name}>
-                    {round.course_name}
+                {uniqueCourseNames.map((courseName) => (
+                  <option key={courseName} value={courseName}>
+                    {courseName}
                   </option>
                 ))}
               </select>

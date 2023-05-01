@@ -60,7 +60,7 @@ useEffect(() => {
         {
           !state.currentUser && (
             <li>
-              <Link className="nav-text" style={{ textDecoration: "none"}} to="/login">Login</Link>
+              <Link className="nav-text" style={{ textDecoration: "none"}} to="/">Login</Link>
             </li>
           )
         }
@@ -71,13 +71,13 @@ useEffect(() => {
             </li>
           )
         }
-        {
+        {/* {
           state.currentUser && (
             <li>
               <Link className="nav-text" style={{ textDecoration: "none"}} to="/profile">Profile</Link>
             </li>
           )
-        }
+        } */}
         {
           state.currentUser && (
             <li>

@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import "./Round.css";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { API_URL } from "../../services/auth.constants";
 import { useGlobalState } from "../../context/GlobalState";
 import request from "../../services/api.request";
 import { useNavigate } from "react-router-dom";
+import NavBar from "../NavBar";
 
 function Round() {
   let navigate = useNavigate();
@@ -200,7 +201,9 @@ function Round() {
   }
 
   return (
-    <div>
+    <div className="background">
+      <NavBar />
+      <Outlet />
       <div className="container d-flex justify-content-center align-items-center h-100">
         <div className="row d-flex justify-content-center">
           <div

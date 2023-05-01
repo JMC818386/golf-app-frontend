@@ -6,6 +6,8 @@ import axios from "axios";
 import { API_URL } from "../../services/auth.constants";
 import { useGlobalState } from "../../context/GlobalState";
 import request from "../../services/api.request";
+import NavBar from "../NavBar";
+import { Outlet } from "react-router-dom";
 
 function RoundHistory() {
   const [rounds, setRounds] = useState([]);
@@ -24,7 +26,9 @@ function RoundHistory() {
   }, []);
 
   return (
-    <div>
+    <div className="background pb-5">
+      <NavBar />
+      <Outlet />
       <div className="container d-flex justify-content-center">
         <div className="row  my-3">
           <div className="col card text-light">
