@@ -1,0 +1,20 @@
+{
+    "name": "golf-app-monorepo",
+    "version": "1.0.0",
+    "description": "Golf App Frontend and Backend Monorepo",
+    "scripts": {
+        "dev:frontend": "cd frontend && npm start",
+        "build:frontend": "cd frontend && npm run build",
+        "install:frontend": "cd frontend && npm install",
+        "install:backend": "cd backend && python3 -m pip install -r requirements.txt",
+        "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+        "dev:backend": "cd backend && python3 manage.py runserver 8000",
+        "setup": "npm run install:frontend && npm run install:backend"
+    },
+    "devDependencies": {
+        "concurrently": "^7.6.0"
+    },
+    "workspaces": [
+        "frontend"
+    ]
+}

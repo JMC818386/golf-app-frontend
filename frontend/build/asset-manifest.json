@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.82e68781.css",
+    "main.js": "/static/js/main.9b435f57.js",
+    "static/media/PocketPro_LogoMark.png": "/static/media/PocketPro_LogoMark.2d4ee125fdd98cab1c40.png",
+    "index.html": "/index.html",
+    "main.82e68781.css.map": "/static/css/main.82e68781.css.map",
+    "main.9b435f57.js.map": "/static/js/main.9b435f57.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.82e68781.css",
+    "static/js/main.9b435f57.js"
+  ]
+}
