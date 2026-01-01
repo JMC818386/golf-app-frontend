@@ -56,11 +56,11 @@ class AuthService {
       });
 
       // Registration successful, now login
-      await this.login(username, password);
-      return response;
+      const loginResult = await this.login(username, password);
+      return loginResult;
     } catch (error) {
       console.error('Registration error:', error);
-      return error.response;
+      throw error;
     }
   } setToken(response) {
     localStorage.setItem('user', JSON.stringify(response.data));

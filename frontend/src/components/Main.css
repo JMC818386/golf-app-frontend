@@ -4,14 +4,14 @@
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Hind', sans-serif; */
 .background {
-    background: rgb(105,140,117);
-    background: radial-gradient(circle, rgba(105,140,117,1) 0%, rgba(70,89,75,1) 53%, rgba(49,64,53,1) 94%);
+    background: rgb(47, 65, 48);
+    background: radial-gradient(circle, #2F4130 0%, #252F2A 35%, #171C1E 100%);
     min-height: 100vh;
 }
 
 .sqr-btn1 {
-    border: none;
-    background-color: #F2A74B;
+    border: 2px solid #E18837;
+    background-color: #804C11;
     -webkit-filter: drop-shadow(5px 5px 5px #314035);
     filter: drop-shadow(5px 5px 5px #314035);
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
@@ -19,8 +19,8 @@ font-family: 'Hind', sans-serif; */
 }
 
 .sqr-btn2 {
-    border: none;
-    background-color: #698C75;
+    border: 2px solid #888888;
+    background-color: #252F2A;
     -webkit-filter: drop-shadow(5px 5px 5px #314035);
     filter: drop-shadow(5px 5px 5px #314035);
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */

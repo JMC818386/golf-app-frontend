@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="background">
+    <div className="background login-page">
       <NavBar />
       <Outlet />
       <div className="container d-flex justify-content-center">
@@ -78,17 +78,20 @@ const Login = () => {
                   />
                 </div>
                 <div className="d-flex justify-content-center">
-                  <div className="d-flex justify-content-center flex-column m-4">
+                  <div className="d-flex justify-content-center flex-column m-4" style={{ width: '250px' }}>
                     <input
-                      className="sqr-btn1 py-2 px-3 mb-3 rounded"
+                      className="rounded"
+                      style={{ marginBottom: '12px', padding: '12px 60px', height: '45px', width: '100%', border: 'none', background: 'rgb(242,167,75)', color: 'white', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '14px', display: 'block', boxSizing: 'border-box' }}
                       type="submit"
                       value="SIGN IN"
                     />
-                    <Link to="/register">
-                      <button className="p-2 sqr-btn2 rounded">
-                        CREATE ACCOUNT
-                      </button>
-                    </Link>
+                    <button
+                      className="rounded"
+                      style={{ padding: '12px 60px', height: '45px', width: '100%', border: 'none', backgroundColor: '#698C75', color: 'white', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '14px', display: 'block', boxSizing: 'border-box', boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset' }}
+                      onClick={() => navigate('/register')}
+                    >
+                      CREATE ACCOUNT
+                    </button>
                   </div>
                 </div>
               </form>

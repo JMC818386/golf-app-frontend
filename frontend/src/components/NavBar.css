@@ -12,7 +12,8 @@ font-family: 'Hind', sans-serif; */
     justify-content: space-around;
     list-style-type: none;
     color: #F2EFDF;
-    background-color: #314035;
+    background: rgb(47, 65, 48);
+    background: radial-gradient(circle, #2F4130 0%, #252F2A 35%, #171C1E 100%);
     padding: 10px 0px 10px 0px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
@@ -24,22 +25,22 @@ font-family: 'Hind', sans-serif; */
 
 }
 
-.nav-text:link { 
+.nav-text:link {
     text-decoration: none;
 }
 
-.nav-text:visited { 
-    text-decoration: none; 
+.nav-text:visited {
+    text-decoration: none;
 }
 
-.nav-text:hover { 
+.nav-text:hover {
     text-decoration: none;
     color: #698C75;
 }
 
-.nav-text:active { 
+.nav-text:active {
     text-decoration: none;
- 
+
 }
 
 

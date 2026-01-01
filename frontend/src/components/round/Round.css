@@ -14,16 +14,16 @@ input[type="checkbox"] {
     border: 1px solid #ccc;
     outline: none;
     background-color: #fff;
-  }
-  
-  input[type="checkbox"]:checked {
+}
+
+input[type="checkbox"]:checked {
     background-color: #F2A74B;
     border-color: #F2A74B;
-  }
-  
-  input[type="checkbox"]:hover {
+}
+
+input[type="checkbox"]:hover {
     cursor: pointer;
-  }
+}
 
 .text-title {
     font-size: 15px;
@@ -49,8 +49,8 @@ input[type="checkbox"] {
 .sort-direction {
     border: none;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    background: rgb(70,89,75);
-    background: radial-gradient(circle, rgba(70,89,75,1) 5%, rgba(49,64,53,1) 100%);
+    background: rgb(70, 89, 75);
+    background: radial-gradient(circle, rgba(70, 89, 75, 1) 5%, rgba(49, 64, 53, 1) 100%);
     color: white;
     font-family: 'Montserrat', sans-serif;
 }
@@ -58,8 +58,8 @@ input[type="checkbox"] {
 .sort-order {
     border: none;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    background: rgb(70,89,75);
-    background: radial-gradient(circle, rgba(70,89,75,1) 5%, rgba(49,64,53,1) 100%);
+    background: rgb(70, 89, 75);
+    background: radial-gradient(circle, rgba(70, 89, 75, 1) 5%, rgba(49, 64, 53, 1) 100%);
     color: white;
     font-family: 'Montserrat', sans-serif;
 }
@@ -68,15 +68,15 @@ input[type="checkbox"] {
     max-width: 400px;
     border: none;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    background: rgb(70,89,75);
-    background: radial-gradient(circle, rgba(70,89,75,1) 5%, rgba(49,64,53,1) 100%);
+    background: rgb(70, 89, 75);
+    background: radial-gradient(circle, rgba(70, 89, 75, 1) 5%, rgba(49, 64, 53, 1) 100%);
     color: white;
     font-family: 'Montserrat', sans-serif;
 }
 
 .filter:active,
 .filter:focus {
-    color:white;
+    color: white;
 }
 
 .loading {
@@ -84,9 +84,9 @@ input[type="checkbox"] {
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-  
-  .spinner {
+}
+
+.spinner {
     border: 4px solid rgba(0, 0, 0, 0.1);
     border-top-color: #000;
     border-radius: 50%;
@@ -94,23 +94,23 @@ input[type="checkbox"] {
     height: 2rem;
     animation: spin 1s linear infinite;
     margin-right: 1rem;
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
 
 .fade-out {
     opacity: 0;
     transition: opacity 0.5s ease-out;
-  }
-  
-  .fade-in {
+}
+
+.fade-in {
     opacity: 1;
     transition: opacity 0.5s ease-in;
-  }
+}
 
 /* .ui {
     max-width: 400px;
@@ -141,7 +141,7 @@ input[type="checkbox"] {
     font-size: 30px;
     color: #F2EFDF;
     font-family: 'Hind', sans-serif;
-    
+
 }
 
 
@@ -160,9 +160,11 @@ input[type="checkbox"] {
 .box {
     /* background-color: #314035; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    background: rgb(70,89,75);
-    background: radial-gradient(circle, rgba(70,89,75,1) 5%, rgba(49,64,53,1) 100%);
-    
+    background: rgb(70, 89, 75);
+    background: radial-gradient(circle, rgba(70, 89, 75, 1) 5%, rgba(49, 64, 53, 1) 100%);
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .circle-btn {
@@ -181,23 +183,25 @@ input[type="checkbox"] {
     display: flex;
     justify-content: center;
 }
-  
+
 
 .sqr-btn1 {
-    border: none;
-    /* background-color: #F2A74B; */
-    background: rgb(242,167,75);
-    background: radial-gradient(circle, rgba(242,167,75,1) 20%, rgba(171,115,47,1) 100%);
+    border: 2px solid #E18837;
+    background: #804C11;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     color: white;
     font-family: 'Montserrat', sans-serif;
-    padding: 3px 0px 3px 0px;
+    padding: 0;
     font-weight: bold;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sqr-btn2 {
-    border: none;
-    background-color: #698C75;
+    border: 2px solid #888888;
+    background-color: #252F2A;
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -213,22 +217,63 @@ input[type="checkbox"] {
 .sqr-btn2:active,
 .sqr-btn2:focus {
     /* background-color: #F2A74B; */
-    background: rgb(242,167,75);
-    background: radial-gradient(circle, rgba(242,167,75,1) 20%, rgba(171,115,47,1) 100%);
+    background: rgb(242, 167, 75);
+    background: radial-gradient(circle, rgba(242, 167, 75, 1) 20%, rgba(171, 115, 47, 1) 100%);
     color: #F2EFDF;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.45) inset;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
 }
 
-.table {
+.card .table {
     color: #F2EFDF;
-    font-size: 10px;
+    font-size: 14px;
+    background: transparent;
+    background-color: transparent;
+    margin-bottom: 0.5rem;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.card .table thead th,
+.card .table tbody td,
+.card .table tbody th {
+    border-color: rgba(242, 239, 223, 0.2);
+    color: #F2EFDF;
+    background-color: transparent;
+    text-align: center;
+    padding: 0.15rem 0.1rem;
+    vertical-align: middle;
+}
+
+.card .table tbody tr {
+    padding: 0.25rem 0;
+}
+
+.card .table tbody tr.par-row td {
+    color: rgba(242, 239, 223, 0.5);
+    font-size: 12px;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+}
+
+.card .table tr {
+    background-color: transparent;
+}
+
+.card .table-striped tbody tr:nth-of-type(odd) {
+    background-color: transparent;
+}
+
+.card .table-hover tbody tr:hover {
+    background-color: rgba(242, 239, 223, 0.1);
 }
 
 .card {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    background: rgb(70,89,75);
-    background: radial-gradient(circle, rgba(70,89,75,1) 5%, rgba(49,64,53,1) 100%);
+    background: rgb(70, 89, 75);
+    background: radial-gradient(circle, rgba(70, 89, 75, 1) 5%, rgba(49, 64, 53, 1) 100%);
     max-width: 400px;
+    overflow: hidden;
+    min-height: 200px;
 }
 
 .score-type {
@@ -291,6 +336,81 @@ input[type="checkbox"] {
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Scorecard Container */
+.scorecard-container {
+    width: 100%;
+    padding: 0.5rem;
+    background: transparent;
+}
+
+/* Score Classification Styling */
+.score {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-weight: 600;
+    color: #F2EFDF;
+}
+
+.score.eagle {
+    border: 4px double #F2EFDF;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.score.birdie {
+    border: 2px solid #F2EFDF;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.score.par {
+    /* No special styling for par */
+}
+
+.score.bogey {
+    border: 2px solid #F2EFDF;
+    box-sizing: border-box;
+}
+
+.score.double-bogey {
+    border: 4px double #F2EFDF;
+    box-sizing: border-box;
+}
+
+.round-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.round-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.round-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    gap: 0;
+    padding: 55px 0 85px 0;
+}
 
 /* 
 #314035 Dark Green
@@ -299,5 +419,3 @@ input[type="checkbox"] {
 #F2EFDF Off White
 #F2A74B Orange 
 */
-
-

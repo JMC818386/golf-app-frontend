@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .background {
-    background: rgb(105,140,117);
-    background: radial-gradient(circle, rgba(105,140,117,1) 0%, rgba(70,89,75,1) 53%, rgba(49,64,53,1) 94%);
+    background: rgb(47, 65, 48);
+    background: radial-gradient(circle, #2F4130 0%, #252F2A 35%, #171C1E 100%);
     min-height: 100vh;
 }
 
@@ -16,7 +16,7 @@
     padding: 3px 0px 3px 0px;
     font-weight: bold;
     position: relative;
-    bottom:0;
+    bottom: 0;
     margin-top: 100%;
 }
 
