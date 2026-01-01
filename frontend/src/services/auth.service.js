@@ -13,6 +13,7 @@ class AuthService {
 
   async login(username, password) {
     try {
+      console.log('AuthService: Attempting login with:', { username, endpoint: LOGIN_ENDPOINT });
       const response = await request({
         url: LOGIN_ENDPOINT,
         method: 'POST',
@@ -22,11 +23,21 @@ class AuthService {
         },
       });
 
+      console.log('AuthService: Response received:', response);
+      console.log('AuthService: Response data:', response.data);
+
       if (response.data.access) {
+        console.log('AuthService: Access token found, setting token');
         return this.setToken(response);
+      } else {
+        console.error('AuthService: No access token in response');
+        return null;
       }
     } catch (error) {
-      console.error('Login failed:', error.response?.data || error.message);
+      console.error('AuthService: Login failed with error:', error);
+      console.error('AuthService: Error response:', error.response);
+      console.error('AuthService: Error response data:', error.response?.data);
+      console.error('AuthService: Error message:', error.message);
       return null;
     }
   }
