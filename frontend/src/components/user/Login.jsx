@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./User.css";
 import { Link, Outlet } from "react-router-dom";
 import logo from "../../img/PocketPro_LogoMark.png";
-import cloverLogo from "../../img/clover-logo.png";
 import NavBar from "../NavBar";
 
 const Login = () => {
@@ -40,15 +39,13 @@ const Login = () => {
   };
 
   return (
-    <div className="background">
+    <div className="background login-page">
       <NavBar />
       <Outlet />
       <div className="container d-flex justify-content-center">
         <div className="row mt-5">
-          <div className="col mt-3 d-flex flex-column align-items-center">
-            <img className="logo" src={logo} alt="Logo" style={{ marginBottom: '15px', width: '188px' }} />
-            <div style={{ fontSize: '24px', color: '#F2EFDF', fontWeight: 'bold', margin: '0' }}>+</div>
-            <img className="logo" src={cloverLogo} alt="Clover Logo" style={{ marginBottom: '90px', marginTop: '15px', width: '188px' }} />
+          <div className="col mt-5">
+            <img className="logo" src={logo} alt="Logo" />
             <div className="c-form">
               <form onSubmit={handleLogin}>
                 <p className="d-flex justify-content-center p-2 mb-1 s-text">
@@ -80,17 +77,17 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <div className="d-flex justify-content-center" style={{ marginTop: '40px' }}>
+                <div className="d-flex justify-content-center">
                   <div className="d-flex justify-content-center flex-column m-4" style={{ width: '250px' }}>
                     <input
                       className="rounded"
-                      style={{ marginBottom: '12px', padding: '12px 60px', height: '45px', width: '100%', border: '2px solid #E18837', background: '#804C11', color: 'white', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '14px', display: 'block', boxSizing: 'border-box' }}
+                      style={{ marginBottom: '12px', padding: '12px 60px', height: '45px', width: '100%', border: 'none', background: 'rgb(242,167,75)', color: 'white', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '14px', display: 'block', boxSizing: 'border-box' }}
                       type="submit"
                       value="SIGN IN"
                     />
                     <button
                       className="rounded"
-                      style={{ padding: '12px 60px', height: '45px', width: '100%', border: '2px solid #888888', background: '#252F2A', color: 'white', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '14px', display: 'block', boxSizing: 'border-box', whiteSpace: 'nowrap' }}
+                      style={{ padding: '12px 60px', height: '45px', width: '100%', border: 'none', backgroundColor: '#698C75', color: 'white', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '14px', display: 'block', boxSizing: 'border-box', boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset' }}
                       onClick={() => navigate('/register')}
                     >
                       CREATE ACCOUNT
