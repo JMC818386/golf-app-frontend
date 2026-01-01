@@ -19,10 +19,14 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    
+    console.log("Attempting login with username:", username);
 
     AuthService.login(username, password).then(async (resp) => {
+      console.log("Login response:", resp);
       if (resp && resp.access) {
         let data = jwtDecode(resp.access);
+        console.log("Decoded JWT:", data);
         await dispatch({
           currentUserToken: resp.access,
           currentUser: data,
@@ -30,6 +34,7 @@ const Login = () => {
         navigate("/main");
       } else {
         // Login failed
+        console.error("Login failed: No access token in response");
         alert("Login failed. Please check your credentials.");
       }
     }).catch((error) => {
@@ -87,7 +92,7 @@ const Login = () => {
                     />
                     <button
                       className="rounded"
-                      style={{ padding: '12px 60px', height: '45px', width: '100%', border: 'none', backgroundColor: '#698C75', color: 'white', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '14px', display: 'block', boxSizing: 'border-box', boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset' }}
+                      style={{ padding: '12px 20px', height: '45px', width: '100%', border: 'none', backgroundColor: '#698C75', color: 'white', fontFamily: 'Montserrat, sans-serif', fontWeight: 'bold', fontSize: '14px', display: 'block', boxSizing: 'border-box', boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset', whiteSpace: 'nowrap' }}
                       onClick={() => navigate('/register')}
                     >
                       CREATE ACCOUNT
