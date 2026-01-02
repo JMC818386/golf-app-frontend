@@ -142,3 +142,20 @@ font-family: 'Hind', sans-serif; */
     display: flex;
     text-align: center;
 }
+
+.login-page .logo {
+    display: block;
+    margin: 0 auto;
+}
+
+.login-page .c-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page .c-form form {
+    width: 100%;
+    max-width: 400px;
+}

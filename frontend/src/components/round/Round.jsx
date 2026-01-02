@@ -148,7 +148,7 @@ function Round() {
       method: "post",
       data: {
         hole_round: roundId,
-        hole: holes[currentHole].number,
+        hole: holes[currentHole].id,
         strokes: strokeCount,
         swings: swingCount,
         putts: puttCount,

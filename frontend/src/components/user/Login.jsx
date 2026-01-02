@@ -19,7 +19,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    
+
     console.log("Attempting login with username:", username);
 
     AuthService.login(username, password).then(async (resp) => {
@@ -47,10 +47,10 @@ const Login = () => {
     <div className="background login-page">
       <NavBar />
       <Outlet />
-      <div className="container d-flex justify-content-center">
-        <div className="row mt-5">
-          <div className="col mt-5">
-            <img className="logo" src={logo} alt="Logo" />
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-8 col-lg-6 mt-5 d-flex flex-column align-items-center">
+            <img className="logo mb-4" src={logo} alt="Logo" />
             <div className="c-form">
               <form onSubmit={handleLogin}>
                 <p className="d-flex justify-content-center p-2 mb-1 s-text">
